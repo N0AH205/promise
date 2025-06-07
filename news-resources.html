@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promise Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-stretch justify-between">
+
+      <!-- Left Links -->
+      <div class="flex items-center space-x-6">
+        <a href="about-us.html" class="text-gray-700 hover:text-blue-500">About Us</a>
+        <a href="our-team.html" class="text-gray-700 hover:text-blue-500">Our Team</a>
+      </div>
+
+      <!-- Center Logo -->
+      <div class="flex items-center">
+        <a href="index.html">
+          <img src="media/gambar4.png" alt="Logo" class="h-14 w-auto" />
+        </a>
+      </div>
+
+      <!-- Right Links & Buttons -->
+      <div class="flex items-stretch space-x-4">
+        <a href="news-resources.html" class="flex items-center text-gray-700 hover:text-blue-500 px-4">News & Resources</a>
+        <a href="donate.html">
+          <button class="bg-blue-500 text-white px-6 text-sm h-full">DONATE</button>
+        </a>
+        <a href="https://www.instagram.com/promisecommunity.id/" class="flex items-center px-2">
+          <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- News Section -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-center text-2xl font-semibold mb-8">Latest News</h2>
+
+    <div class="space-y-12">
+      <!-- News Item 1 -->
+      <div class="flex flex-col md:flex-row gap-6 items-center border-b pb-6">
+        <div class="flex-1">
+          <p class="text-xs text-gray-400">Saturday, April 19 , 2025</p>
+          <h3 class="text-lg font-semibold mt-1">Fun Art and Craft Session</h3>
+          <p class="text-sm text-gray-600 mt-2">Opening
+Hi Guys! On the 19th of April, our community came back for another visit! This week’s session is a bit different from last weeks. Instead of learning, we emphasized creativity and did some fun art sessions with the kids. It was a bit chaotic, but overall a very fun experience, and we also got to see the kids' creative sides and their joy while doing it.
+
+Content
+Before we started our session, we saw how enthusiastic the kids were today. Many kids were running around chasing one another, playing bottle flips and even playing some traditional game of their own. And of course some of us even joined in with them. 
+
+After playing around for quite awhile, we started with the main activity, making collage. Beforehand, we had already printed various things on paper such as turtles, birds, rockets etc. With some origami paper, the kids could cut it up into tiny pieces and fill up the picture with different colours however they want. During the session, we could see how some kids were really locked in and focused, which later on made some very neat and awesome pieces. Some of them even finished earlier than others, giving them the chance to make paper airplanes and play around for a while. 
+
+Closing
+Before we ended the session, we collected all the artworks they had made and gave them all a small goody bag filled with snacks. Afterwards, we invited the kids to help clean up the room as it was filled with papers and glue, teaching them to be responsible. Overall, we had a really fun time playing around and bonding with kids. We hope to see them again soon! 
+</p>
+        </div>
+        <img src="media/gambar9.png" class="w-full md:w-1/2 rounded object-cover" />
+      </div>
+
+      <!-- News Item 2 -->
+      <div class="flex flex-col md:flex-row gap-6 items-center border-b pb-6">
+        <div class="flex-1">
+          <p class="text-xs text-gray-400">Saturday, April 12, 2025</p>
+          <h3 class="text-lg font-semibold mt-1">Fun Lessons on Finance</h3>
+          <p class="text-sm text-gray-600 mt-2">Hey everyone!
+In the 2nd week of April 2025, Promise returned for yet another exciting visit. This week, we picked up where we left off the week before and had a fun lesson on finance, learning about financial management, as well as primary and secondary needs.
+
+Content 
+We taught the kids about understanding important financial needs, like primary needs, secondary needs, clothing, and food needs. After the explanation, we jumped straight into practice. We had prepared engaging activities such as play shopping, where the kids could have a shopping simulation for their needs. The experiences and interactions from this session will leave a lasting impression and help the children develop a better understanding of financial decision-making. We are very proud of them for coming this far! 
+
+Closing
+Once we finished with our activity, we wrapped it up by discussing and teaching them how to make the best financial decision. We then closed today’s lesson by giving out snacks, which they received with glee. But soon, the time came for us to head home and bid a warm farewell to the kids. We look forward to the next visit next week! See you next week! 
+</p>
+        </div>
+        <img src="media/gambar8.png" class="w-full md:w-1/2 rounded object-cover" />
+      </div>
+    </div>
+
+    <!-- Gallery Navigation -->
+    <div class="my-12 border-t pt-6 flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Gallery & Highlights</h2>
+      <div>
+        <button id="prev" class="text-xl mx-2">&larr;</button>
+        <button id="next" class="text-xl mx-2">&rarr;</button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="newsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 transition-all duration-300">
+
+      <!-- Batch 1 -->
+      <div class="batch batch-1">
+        <img src="media/gambar7.png" class="w-full h-40 object-cover rounded" />
+        <p class="text-xs text-gray-400 mt-2">Saturday, February 22, 2025</p>
+        <p class="text-sm text-gray-800">The Importance of Team Work</p>
+      </div>
+      <div class="batch batch-1">
+        <img src="media/gambar6.png" class="w-full h-40 object-cover rounded" />
+        <p class="text-xs text-gray-400 mt-2">Saturday, April 19 , 2025</p>
+        <p class="text-sm text-gray-800">Fun Problem Solving Session</p>
+      </div>
+
+      <!-- Batch 2 -->
+      <div class="hidden batch batch-2">
+        <img src="media/gambar5.png" class="w-full h-40 object-cover rounded" />
+        <p class="text-xs text-gray-400 mt-2">Saturday, March 22, 2025</p>
+        <p class="text-sm text-gray-800">Learning Math the Fun Way</p>
+      </div>
+      <div class="hidden batch batch-2">
+        <img src="media/gambar5.png" class="w-full h-40 object-cover rounded" />
+        <p class="text-xs text-gray-400 mt-2">8 SEPTEMBER 2024</p>
+        <p class="text-sm text-gray-800">Lorem ipsum dolor sit amet, consectetur</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Gallery Switch Script -->
+  <script>
+    const batches = document.querySelectorAll('.batch');
+    let currentBatch = 1;
+
+    document.getElementById('next').addEventListener('click', () => {
+      batches.forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll(`.batch-${(currentBatch % 2) + 1}`).forEach(el => el.classList.remove('hidden'));
+      currentBatch = (currentBatch % 2) + 1;
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      batches.forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll(`.batch-${currentBatch === 1 ? 2 : 1}`).forEach(el => el.classList.remove('hidden'));
+      currentBatch = currentBatch === 1 ? 2 : 1;
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-blue-500 text-white px-6 py-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 max-h-full">
+
+      <!-- Logo -->
+      <div class="flex justify-start">
+        <img src="media/gambar3.png" class="h-32 w-auto" alt="Promise Community Logo" />
+      </div>
+
+      <!-- Footer Links -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+        <!-- About Us -->
+        <div>
+          <h4 class="font-bold mb-2">About Us</h4>
+          <ul class="space-y-1">
+            <li><a href="about-us.html" class="hover:underline">ABOUT US</a></li>
+            <li><a href="news-resources.html" class="hover:underline">ACTIVITIES</a></li>
+            <li><a href="our-team.html" class="hover:underline">OUR TEAM</a></li>
+          </ul>
+        </div>
+
+        <!-- Get Involved -->
+        <div>
+          <h4 class="font-bold mb-2">Get Involved</h4>
+          <ul class="space-y-1">
+            <li><a href="donate.html" class="hover:underline">DONATE</a></li>
+            <li><a href="#" class="hover:underline">CONTACT US</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="hover:underline">VOLUNTEER</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect -->
+        <div>
+          <h4 class="font-bold mb-2">Connect</h4>
+          <div class="flex space-x-3">
+            <a href="https://www.instagram.com/promisecommunity.id/" aria-label="Instagram">
+              <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <img src="media/in.png" alt="LinkedIn" class="h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promise Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+</head>
+<body class="font-sans text-gray-800">
+
+
+  <!-- Top Bar -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-stretch justify-between">
+      <!-- Left Links -->
+      <div class="flex items-center space-x-6">
+        <a href="about-us.html" class="text-gray-700 hover:text-blue-500">About Us</a>
+        <a href="our-team.html" class="text-gray-700 hover:text-blue-500">Our Team</a>
+      </div>
+
+      <!-- Center Logo -->
+      <div class="flex items-center space-x-2">
+        <a href="index.html">
+          <img src="media/gambar4.png" alt="Logo" class="h-14 w-auto" />
+        </a>
+      </div>
+
+      <!-- Right Links & Buttons -->
+      <div class="flex items-stretch space-x-4">
+        <a href="news-resources.html" class="flex items-center text-gray-700 hover:text-blue-500 px-4">News & Resources</a>
+        <a href="donate.html">
+          <button class="bg-blue-500 text-white px-6 text-sm h-full">DONATE</button>
+        </a>
+        <a href="https://www.instagram.com/promisecommunity.id/" class="flex items-center px-2">
+          <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
+        </a>
+      </div>
+    </div>
+  </header> 
+
+  <!-- Hero Section -->
+  <div class="relative">
+    <img src="media/gambar10.png" alt="Kids" class="w-full h-96 object-cover" />
+    <div id="donationCard" class="absolute inset-x-0 top-56 mx-auto w-full max-w-3xl bg-white p-8 shadow-lg rounded-lg">
+      <h2 class="text-2xl font-bold mb-2">Join Our Movement</h2>
+      <p class="text-sm text-gray-600 mb-6">Your support, no matter the size, changes lives. On Gang</p>
+      <div class="flex gap-4 mb-4">
+        <button class="donation-type flex-1 py-2 border border-gray-300 rounded text-sm font-medium bg-gray-100 text-black">ONE-TIME</button>
+        <button class="donation-type flex-1 py-2 border border-gray-300 rounded text-sm font-medium bg-gray-100 text-black">MONTHLY</button>
+      </div>
+      <div class="grid grid-cols-4 gap-2 mb-4">
+        <button class="amount-btn border border-gray-300 py-2 rounded text-sm bg-white text-black" data-amount="50000">Rp50.000</button>
+        <button class="amount-btn border border-gray-300 py-2 rounded text-sm bg-white text-black" data-amount="75000">Rp75.000</button>
+        <button class="amount-btn border border-gray-300 py-2 rounded text-sm bg-white text-black" data-amount="100000">Rp100.000</button>
+        <input id="customAmount" type="text" placeholder="CUSTOM" class="border border-gray-300 py-2 px-2 rounded text-sm" />
+      </div>
+      <button id="continueBtn" class="bg-blue-400 text-white w-full py-2 rounded text-sm font-semibold hover:bg-blue-500 transition">
+        CONTINUE
+      </button>
+    </div>
+  </div>
+
+  <!-- Donation Form -->
+  <div id="donationForm" class="hidden mt-10 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h3 id="donationAmountText" class="text-xl font-bold mb-4 text-center">You're donating Rp.0!</h3>
+    <div class="flex items-center mb-4">
+      <input id="stayAnonymousToggle" type="checkbox" class="mr-2 w-4 h-4" />
+      <label for="stayAnonymousToggle" class="text-sm">Stay Anonymous</label>
+    </div>
+    <input type="text" id="fullName" placeholder="FULL NAME*" class="required-field w-full border rounded p-2 mb-2" />
+    <input type="email" id="email" placeholder="ALAMAT EMAIL*" class="required-field w-full border rounded p-2 mb-2" />
+    <input type="tel" id="phone" placeholder="NOMOR TELPON*" class="required-field w-full border rounded p-2 mb-2" />
+    <textarea placeholder="MESSAGE (Optional)" class="w-full border rounded p-2 mb-2"></textarea>
+    <input type="file" id="proofUpload" class="w-full border rounded p-2 mb-4" required />
+    <p class="text-center font-medium pb-6">
+      BCA: 4800340069<br />
+      +62 811 110 838<br />
+      +62 878-1720-7128
+    </p>
+    <button id="submitBtn" class="bg-green-500 hover:bg-green-600 text-white w-full py-4 rounded font-semibold">
+      SUBMIT
+    </button>
+   
+    
+  </div>
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+      const formData = new FormData();
+    
+      formData.append('fullName', document.getElementById('fullName').value);
+      formData.append('email', document.getElementById('email').value);
+      formData.append('phone', document.getElementById('phone').value);
+      formData.append('message', document.querySelector('textarea').value);
+      formData.append('anonymous', document.getElementById('stayAnonymousToggle').checked);
+      formData.append('proofUpload', document.getElementById('proofUpload').files[0]);
+    
+      try {
+        const response = await fetch('http://localhost:3000/donate', {
+          method: 'POST',
+          body: formData
+        });
+    
+        const result = await response.json();
+        alert(result.message);
+      } catch (err) {
+        console.error(err);
+        alert('Failed to send donation');
+      }
+    });
+    </script>
+    
+
+  <!-- Info Section -->
+  <div id="infoSection" class="max-w-6xl mx-auto px-4 py-32 pt-44 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+    <div class="border rounded-lg p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-600 mb-2">The Problem</h3>
+      <p class="text-sm text-gray-600">Explain the issue you're tackling here to give context to the donor.</p>
+    </div>
+    <div class="border rounded-lg p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-600 mb-2">Our Solution</h3>
+      <p class="text-sm text-gray-600">Share your approach or initiative to solve the problem.</p>
+    </div>
+    <div class="border rounded-lg p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-600 mb-2">Your Contribution</h3>
+      <p class="text-sm text-gray-600">Tell donors how their support directly impacts your mission.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-500 text-white px-6 py-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+      <div>
+        <img src="media/gambar3.png" class="h-32 w-auto" alt="Promise Community Logo" />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+        <div>
+          <h4 class="font-bold mb-2">About Us</h4>
+          <ul class="space-y-1">
+            <li><a href="about-us.html" class="hover:underline">ABOUT US</a></li>
+            <li><a href="news-resources.html" class="hover:underline">ACTIVITIES</a></li>
+            <li><a href="our-team.html" class="hover:underline">OUR TEAM</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-2">Get Involved</h4>
+          <ul class="space-y-1">
+            <li><a href="donate.html" class="hover:underline">DONATE</a></li>
+            <li><a href="#" class="hover:underline">CONTACT US</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="hover:underline">VOLUNTEER</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-2">Connect</h4>
+          <div class="flex space-x-3">
+            <a href="https://www.instagram.com/promisecommunity.id/" class="hover:underline">Instagram</a>
+            <!-- Add more icons if needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    let selectedAmount = 0;
+
+    document.querySelectorAll('.donation-type').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.donation-type').forEach(b => {
+          b.classList.remove('bg-blue-500', 'text-white');
+          b.classList.add('bg-gray-100', 'text-black');
+        });
+        btn.classList.add('bg-blue-500', 'text-white');
+        btn.classList.remove('bg-gray-100', 'text-black');
+      });
+    });
+
+    document.querySelectorAll('.amount-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.amount-btn').forEach(b => {
+          b.classList.remove('bg-blue-500', 'text-white');
+          b.classList.add('bg-white', 'text-black');
+        });
+        button.classList.add('bg-blue-500', 'text-white');
+        button.classList.remove('bg-white', 'text-black');
+        document.getElementById('customAmount').value = '';
+        selectedAmount = parseInt(button.getAttribute('data-amount'));
+      });
+    });
+
+    document.getElementById('continueBtn').addEventListener('click', () => {
+      const customInput = document.getElementById('customAmount').value;
+      const customValue = parseInt(customInput.replace(/[^\d]/g, ''));
+      if (!isNaN(customValue)) {
+        selectedAmount = customValue;
+        document.querySelectorAll('.amount-btn').forEach(b => {
+          b.classList.remove('bg-blue-500', 'text-white');
+          b.classList.add('bg-white', 'text-black');
+        });
+      }
+      if (selectedAmount > 0) {
+        document.getElementById('donationAmountText').innerText =
+          `You're donating Rp.${selectedAmount.toLocaleString('id-ID')}!`;
+        document.getElementById('donationForm').classList.remove('hidden');
+        document.getElementById('donationCard').classList.add('hidden');
+        document.getElementById('infoSection').classList.add('hidden');
+        window.scrollTo({
+          top: document.getElementById('donationForm').offsetTop - 100,
+          behavior: 'smooth'
+        });
+      } else {
+        alert('Please select or enter an amount.');
+      }
+    });
+
+    const toggle = document.getElementById("stayAnonymousToggle");
+    const requiredFields = document.querySelectorAll(".required-field");
+
+    toggle.addEventListener("change", () => {
+      requiredFields.forEach(field => {
+        if (toggle.checked) {
+          field.style.display = "none";
+          field.removeAttribute("required");
+        } else {
+          field.style.display = "block";
+          field.setAttribute("required", true);
+        }
+      });
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const proof = document.getElementById('proofUpload').files[0];
+      const isAnon = toggle.checked;
+
+      if (!proof) {
+        alert("Please upload proof of donation.");
+        return;
+      }
+
+      if (!isAnon) {
+        for (let field of requiredFields) {
+          if (field.value.trim() === "") {
+            alert("Please fill in all required fields.");
+            return;
+          }
+        }
+      }
+
+      alert("Thank you for your donation!");
+    });
+  </script>
+</body>
+</html>
