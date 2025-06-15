@@ -6,32 +6,31 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-
-// ✅ Enable CORS
+// ✅ CORS & Middleware
 app.use(cors({ origin: '*' }));
-
-// ✅ Parse incoming data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Serve static files from the parent directory (your frontend lives here)
-const rootPath = path.join(__dirname, '..');
-app.use(express.static(rootPath));
+// ✅ Serve static HTML + media from root
+app.use(express.static(__dirname));
 
-// ✅ Serve index.html at "/"
+// ✅ Serve media folder too
+app.use('/media', express.static(path.join(__dirname, 'media')));
+
+// ✅ Serve index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(rootPath, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// ✅ Support direct routes to other .html files (like donate.html)
+// ✅ Serve other .html pages (about-us.html, donate.html, etc.)
 app.get('/:page', (req, res) => {
-  res.sendFile(path.join(rootPath, req.params.page));
+  res.sendFile(path.join(__dirname, req.params.page));
 });
 
-// ✅ Configure file uploads to 'backend/uploads/'
+// ✅ File upload handling (save into backend/uploads/)
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, 'uploads'));
+    cb(null, path.join(__dirname, 'backend/uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '-' + file.originalname);
@@ -39,7 +38,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// ✅ Handle form + file upload to /donate
 app.post('/donate', upload.single('proofUpload'), (req, res) => {
   const { fullName, email, phone, message, anonymous } = req.body;
   const proof = req.file;
