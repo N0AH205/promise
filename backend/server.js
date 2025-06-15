@@ -11,7 +11,7 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Serve static HTML + media from root
+// ✅ Serve static HTML + mediahi from root 
 app.use(express.static(__dirname));
 
 // ✅ Serve media folder too
@@ -30,7 +30,7 @@ app.get('/:page', (req, res) => {
 // ✅ File upload handling (save into backend/uploads/)
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, 'backend/uploads'));
+    cb(null, path.join(__dirname, 'uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '-' + file.originalname);
