@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 // ✅ Serve static HTML from root
 app.use(express.static(__dirname));
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+
 // ✅ Serve media folder too
 app.use('/media', express.static(path.join(__dirname, 'media')));
 
@@ -44,7 +47,8 @@ app.post('/donate', upload.single('proofUpload'), async (req, res) => {
   const { fullName, email, phone, message, anonymous } = req.body;
   const proof = req.file;
 
-  const imageUrl = proof ? `http://localhost:${port}/uploads/${proof.filename}` : '';
+  const imageUrl = proof ? `https://promise-community.org/uploads/${proof.filename}` : '';
+
 
   console.log('Donation Received:', { fullName, email, phone, message, anonymous });
   console.log('Proof file:', proof?.filename);

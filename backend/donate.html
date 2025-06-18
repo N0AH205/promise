@@ -88,7 +88,9 @@
   </button>
 </form>
 
- <script>
+ <script type="module">
+  import { uploadFiles } from "https://esm.sh/uploadthing/client";
+
   document.getElementById('submitBtn').addEventListener('click', async (e) => {
     e.preventDefault();
 
@@ -99,19 +101,23 @@
     const anonymous = document.getElementById('stayAnonymousToggle').checked;
     const proofUpload = document.getElementById('proofUpload').files[0];
 
-    // Use FormData to handle file upload
-    const formData = new FormData();
-    formData.append('fullName', fullName);
-    formData.append('email', email);
-    formData.append('phone', phone);
-    formData.append('message', message);
-    formData.append('anonymous', anonymous);
-    formData.append('proofUpload', proofUpload);
+    if (!proofUpload) {
+      return alert("Please upload proof of donation.");
+    }
 
     try {
+      // ✅ Upload image to UploadThing
+      const uploaded = await uploadFiles([proofUpload], "imageUploader");
+      const imageUrl = uploaded[0]?.url;
+
+      // ✅ Then send rest of data to backend
       const response = await fetch('http://localhost:3000/donate', {
         method: 'POST',
-        body: formData
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName, email, phone, message,
+          anonymous, imageUrl
+        })
       });
 
       const result = await response.json();
@@ -122,6 +128,7 @@
     }
   });
 </script>
+
 
 
     
