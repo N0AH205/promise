@@ -103,24 +103,30 @@ document.getElementById('submitBtn').addEventListener('click', async (e) => {
     return alert("Please upload proof of donation.");
   }
 
-  // ✅ Convert image to base64
   const reader = new FileReader();
   reader.onload = async () => {
     const imageBase64 = reader.result;
 
     try {
-      const response = await fetch('/donate', {
-
-
+      const response = await fetch('/api/upload', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName, email, phone, message, anonymous, imageBase64
+          fullName,
+          email,
+          phone,
+          message,
+          anonymous,
+          imageBase64
         })
       });
 
       const result = await response.json();
-      alert(result.message || 'Donation submitted!');
+      if (result.result === "success") {
+        alert("✅ Donation submitted!");
+      } else {
+        alert("❌ " + (result.message || "Submission failed."));
+      }
     } catch (err) {
       console.error(err);
       alert('❌ Failed to send donation.');
@@ -130,6 +136,7 @@ document.getElementById('submitBtn').addEventListener('click', async (e) => {
   reader.readAsDataURL(proofUpload);
 });
 </script>
+
 
 
 

@@ -23,7 +23,7 @@ app.post('/donate', async (req, res) => {
   const { fullName, email, phone, message, anonymous, imageBase64 } = req.body;
 
   try {
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzPN9SFQr-Tm4dJPk5CtOOzLLU7urPZvoiSiqgCQZpSLDUG_9Yr9carGUBpj1TSBVq5/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzT5eSqPA-0Obfr58bGNMQvb8J1kdNg8xmkSeDQq7Y7qO56OsIyCnZfMt7HW1RHb0r8/exec';
 
     const response = await axios.post(scriptUrl, {
       fullName,
