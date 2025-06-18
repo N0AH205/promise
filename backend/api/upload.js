@@ -24,9 +24,19 @@ export default async function handler(req, res) {
 
     const result = await forward.json();
 
-    return res.status(200).json({ message: '✅ Donation submitted!', result });
+    return res.status(200).json({
+  success: true,
+  message: '✅ Donation submitted!',
+  result
+});
+
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ message: '❌ Server error', error: err.message });
+    return res.status(500).json({
+  success: false,
+  message: '❌ Server error',
+  error: err.message
+});
+
   }
 }
