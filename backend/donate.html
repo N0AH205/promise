@@ -88,55 +88,7 @@
   </button>
 </form>
 
- <script>
-document.getElementById('submitBtn').addEventListener('click', async (e) => {
-  e.preventDefault();
-
-  const fullName = document.getElementById('fullName').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const message = document.getElementById('message').value;
-  const anonymous = document.getElementById('stayAnonymousToggle').checked;
-  const proofUpload = document.getElementById('proofUpload').files[0];
-
-  if (!proofUpload) {
-    return alert("Please upload proof of donation.");
-  }
-
-  const reader = new FileReader();
-  reader.onload = async () => {
-    const imageBase64 = reader.result;
-
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          email,
-          phone,
-          message,
-          anonymous,
-          imageBase64
-        })
-      });
-
-      const result = await response.json();
-      if (result.result === "success") {
-        alert("✅ Donation submitted!");
-      } else {
-        alert("❌ " + (result.message || "Submission failed."));
-      }
-    } catch (err) {
-      console.error(err);
-      alert('❌ Failed to send donation.');
-    }
-  };
-
-  reader.readAsDataURL(proofUpload);
-});
-</script>
-
+ 
 
 
 
@@ -283,5 +235,50 @@ document.getElementById('submitBtn').addEventListener('click', async (e) => {
       alert("Thank you for your donation!");
     });
   </script>
+  <script>
+document.getElementById('submitBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  const fullName = document.getElementById('fullName').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const message = document.getElementById('message').value;
+  const anonymous = document.getElementById('stayAnonymousToggle').checked;
+  const proofUpload = document.getElementById('proofUpload').files[0];
+
+  if (!proofUpload) {
+    return alert("Please upload proof of donation.");
+  }
+
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const imageBase64 = reader.result;
+
+    try {
+      const response = await fetch('/api/upload', {
+  method: 'POST',
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    fullName, email, phone, message, anonymous, imageBase64
+  })
+});
+
+
+      const result = await response.json();
+      if (result.result === "success") {
+        alert("✅ Donation submitted!");
+      } else {
+        alert("❌ " + (result.message || "Submission failed."));
+      }
+    } catch (err) {
+      console.error(err);
+      alert('❌ Failed to send donation.');
+    }
+  };
+
+  reader.readAsDataURL(proofUpload);
+});
+</script>
+
 </body>
 </html>
