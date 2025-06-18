@@ -109,7 +109,9 @@ document.getElementById('submitBtn').addEventListener('click', async (e) => {
     const imageBase64 = reader.result;
 
     try {
-      const response = await fetch('http://localhost:3000/donate', {
+      const response = await fetch('/donate', {
+
+
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
