@@ -44,7 +44,7 @@ app.post('/donate', upload.single('proofUpload'), async (req, res) => {
   const { fullName, email, phone, message, anonymous } = req.body;
   const proof = req.file;
 
-  const imageUrl = proof ? `http://localhost:${port}/media/${proof.filename}` : '';
+  const imageUrl = proof ? `http://localhost:${port}/uploads/${proof.filename}` : '';
 
   console.log('Donation Received:', { fullName, email, phone, message, anonymous });
   console.log('Proof file:', proof?.filename);
