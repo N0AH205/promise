@@ -88,35 +88,32 @@
   </button>
 </form>
 
- <script type="module">
-  import { uploadFiles } from "https://esm.sh/uploadthing/client";
+ <script>
+document.getElementById('submitBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
 
-  document.getElementById('submitBtn').addEventListener('click', async (e) => {
-    e.preventDefault();
+  const fullName = document.getElementById('fullName').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const message = document.getElementById('message').value;
+  const anonymous = document.getElementById('stayAnonymousToggle').checked;
+  const proofUpload = document.getElementById('proofUpload').files[0];
 
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.querySelector('textarea').value;
-    const anonymous = document.getElementById('stayAnonymousToggle').checked;
-    const proofUpload = document.getElementById('proofUpload').files[0];
+  if (!proofUpload) {
+    return alert("Please upload proof of donation.");
+  }
 
-    if (!proofUpload) {
-      return alert("Please upload proof of donation.");
-    }
+  // ✅ Convert image to base64
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const imageBase64 = reader.result;
 
     try {
-      // ✅ Upload image to UploadThing
-      const uploaded = await uploadFiles([proofUpload], "imageUploader");
-      const imageUrl = uploaded[0]?.url;
-
-      // ✅ Then send rest of data to backend
       const response = await fetch('http://localhost:3000/donate', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName, email, phone, message,
-          anonymous, imageUrl
+          fullName, email, phone, message, anonymous, imageBase64
         })
       });
 
@@ -126,8 +123,12 @@
       console.error(err);
       alert('❌ Failed to send donation.');
     }
-  });
+  };
+
+  reader.readAsDataURL(proofUpload);
+});
 </script>
+
 
 
 
