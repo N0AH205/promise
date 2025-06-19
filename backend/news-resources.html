@@ -3,128 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Promise Community</title>
+  <title>News & Resources - Promise Community</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#1e40af',
+            accent: '#3b82f6',
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .news-item {
+      transition: all 0.3s ease;
+    }
+    .news-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-nav-btn {
+      transition: all 0.3s ease;
+    }
+    .gallery-nav-btn:hover:not(:disabled) {
+      background-color: #3b82f6;
+      color: white;
+    }
+    .testimonial-quote:before {
+      content: '"';
+      font-size: 4rem;
+      color: #dbeafe;
+      position: absolute;
+      left: -1rem;
+      top: -1rem;
+      z-index: -1;
+    }
+  </style>
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 antialiased">
 
-  <!-- Header -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-stretch justify-between">
+  <!-- Navigation -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        
+        <!-- Left Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="about-us.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">About Us</a>
+          <a href="our-team.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Our Team</a>
+        </div>
 
-      <!-- Left Links -->
-      <div class="flex items-center space-x-6">
-        <a href="about-us.html" class="text-gray-700 hover:text-blue-500">About Us</a>
-        <a href="our-team.html" class="text-gray-700 hover:text-blue-500">Our Team</a>
+        <!-- Center Logo -->
+        <div class="flex items-center justify-center flex-1 md:flex-none">
+          <a href="index.html" class="flex items-center">
+            <img src="media/gambar4.png" alt="Promise Community Logo" class="h-14 w-auto" />
+          </a>
+        </div>
+
+        <!-- Right Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="news-resources.html" class="text-primary font-medium">News & Resources</a>
+          <a href="donate.html" class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+            DONATE
+          </a>
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary transition-colors duration-200" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
       </div>
+    </div>
 
-      <!-- Center Logo -->
-      <div class="flex items-center">
-        <a href="index.html">
-          <img src="media/gambar4.png" alt="Logo" class="h-14 w-auto" />
-        </a>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="about-us.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About Us</a>
+        <a href="our-team.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Our Team</a>
+        <a href="news-resources.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-blue-50">News & Resources</a>
+        <a href="donate.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-secondary">Donate</a>
+        <div class="flex px-3 py-2 space-x-4">
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- Right Links & Buttons -->
-      <div class="flex items-stretch space-x-4">
-        <a href="news-resources.html" class="flex items-center text-gray-700 hover:text-blue-500 px-4">News & Resources</a>
-        <a href="donate.html">
-          <button class="bg-blue-500 text-white px-6 text-sm h-full">DONATE</button>
-        </a>
-        <a href="https://www.instagram.com/promisecommunity.id/" class="flex items-center px-2">
-          <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
-        </a>
-      </div>
-
     </div>
   </header>
 
-  <!-- News Section -->
-  <section class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-center text-2xl font-semibold mb-8">Latest News</h2>
-
-    <div class="space-y-12">
-      <!-- News Item 1 -->
-      <div class="flex flex-col md:flex-row gap-6 items-center border-b pb-6">
-        <div class="flex-1">
-          <p class="text-xs text-gray-400">Saturday, April 19 , 2025</p>
-          <h3 class="text-lg font-semibold mt-1">Fun Art and Craft Session</h3>
-          <p class="text-sm text-gray-600 mt-2">Opening
-Hi Guys! On the 19th of April, our community came back for another visit! This week’s session is a bit different from last weeks. Instead of learning, we emphasized creativity and did some fun art sessions with the kids. It was a bit chaotic, but overall a very fun experience, and we also got to see the kids' creative sides and their joy while doing it.
-
-Content
-Before we started our session, we saw how enthusiastic the kids were today. Many kids were running around chasing one another, playing bottle flips and even playing some traditional game of their own. And of course some of us even joined in with them. 
-
-After playing around for quite awhile, we started with the main activity, making collage. Beforehand, we had already printed various things on paper such as turtles, birds, rockets etc. With some origami paper, the kids could cut it up into tiny pieces and fill up the picture with different colours however they want. During the session, we could see how some kids were really locked in and focused, which later on made some very neat and awesome pieces. Some of them even finished earlier than others, giving them the chance to make paper airplanes and play around for a while. 
-
-Closing
-Before we ended the session, we collected all the artworks they had made and gave them all a small goody bag filled with snacks. Afterwards, we invited the kids to help clean up the room as it was filled with papers and glue, teaching them to be responsible. Overall, we had a really fun time playing around and bonding with kids. We hope to see them again soon! 
-</p>
-        </div>
-        <img src="media/gambar9.png" class="w-full md:w-1/2 rounded object-cover" />
-      </div>
-
-      <!-- News Item 2 -->
-      <div class="flex flex-col md:flex-row gap-6 items-center border-b pb-6">
-        <div class="flex-1">
-          <p class="text-xs text-gray-400">Saturday, April 12, 2025</p>
-          <h3 class="text-lg font-semibold mt-1">Fun Lessons on Finance</h3>
-          <p class="text-sm text-gray-600 mt-2">Hey everyone!
-In the 2nd week of April 2025, Promise returned for yet another exciting visit. This week, we picked up where we left off the week before and had a fun lesson on finance, learning about financial management, as well as primary and secondary needs.
-
-Content 
-We taught the kids about understanding important financial needs, like primary needs, secondary needs, clothing, and food needs. After the explanation, we jumped straight into practice. We had prepared engaging activities such as play shopping, where the kids could have a shopping simulation for their needs. The experiences and interactions from this session will leave a lasting impression and help the children develop a better understanding of financial decision-making. We are very proud of them for coming this far! 
-
-Closing
-Once we finished with our activity, we wrapped it up by discussing and teaching them how to make the best financial decision. We then closed today’s lesson by giving out snacks, which they received with glee. But soon, the time came for us to head home and bid a warm farewell to the kids. We look forward to the next visit next week! See you next week! 
-</p>
-        </div>
-        <img src="media/gambar8.png" class="w-full md:w-1/2 rounded object-cover" />
-      </div>
-    </div>
-
-    <!-- Gallery Navigation -->
-    <div class="my-12 border-t pt-6 flex justify-between items-center">
-      <h2 class="text-xl font-semibold">Gallery & Highlights</h2>
-      <div>
-        <button id="prev" class="text-xl mx-2">&larr;</button>
-        <button id="next" class="text-xl mx-2">&rarr;</button>
-      </div>
-    </div>
-
-    <!-- Gallery Grid -->
-    <div id="newsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 transition-all duration-300">
-
-      <!-- Batch 1 -->
-      <div class="batch batch-1">
-        <img src="media/gambar7.png" class="w-full h-40 object-cover rounded" />
-        <p class="text-xs text-gray-400 mt-2">Saturday, February 22, 2025</p>
-        <p class="text-sm text-gray-800">The Importance of Team Work</p>
-      </div>
-      <div class="batch batch-1">
-        <img src="media/gambar6.png" class="w-full h-40 object-cover rounded" />
-        <p class="text-xs text-gray-400 mt-2">Saturday, April 19 , 2025</p>
-        <p class="text-sm text-gray-800">Fun Problem Solving Session</p>
-      </div>
-
-      <!-- Batch 2 -->
-      <div class="hidden batch batch-2">
-        <img src="media/gambar5.png" class="w-full h-40 object-cover rounded" />
-        <p class="text-xs text-gray-400 mt-2">Saturday, March 22, 2025</p>
-        <p class="text-sm text-gray-800">Learning Math the Fun Way</p>
-      </div>
-      <div class="hidden batch batch-2">
-        <img src="media/gambar5.png" class="w-full h-40 object-cover rounded" />
-        <p class="text-xs text-gray-400 mt-2">8 SEPTEMBER 2024</p>
-        <p class="text-sm text-gray-800">Lorem ipsum dolor sit amet, consectetur</p>
-      </div>
-
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-secondary text-white py-16 md:py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">News & Resources</h1>
+      <p class="text-xl text-blue-100">Stay updated with our latest activities and events</p>
     </div>
   </section>
 
-  <!-- Gallery Switch Script -->
+  <!-- News Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Latest Updates</h2>
+      
+      <div class="space-y-12">
+        <!-- News Item 1 -->
+        <!-- News Item 1 (original) -->
+<div class="flex flex-col md:flex-row gap-8 items-center bg-white rounded-xl overflow-hidden shadow-md news-item">
+  <div class="md:w-1/2">
+    <img src="media/gambar8.png" alt="Fun Lessons on Finance" class="w-full h-64 md:h-full object-cover" loading="lazy" />
+  </div>
+  <div class="md:w-1/2 p-6 md:p-8">
+    <p class="text-sm text-gray-500 mb-2">Saturday, April 12, 2025</p>
+    <h3 class="text-xl font-bold text-gray-800 mb-4">Fun Lessons on Finance</h3>
+    <div class="text-gray-700 mb-4">
+      <p class="short-text line-clamp-3">
+        In the 2nd week of April, Promise returned for another exciting visit with fun lessons on financial management. We taught kids about primary and secondary needs through engaging activities like play shopping, helping them develop better financial decision-making skills.
+      </p>
+      <p class="full-text hidden mt-4">
+        Hey everyone! In the 2nd week of April 2025, Promise returned for yet another exciting visit. This week, we picked up where we left off the week before and had a fun lesson on finance, learning about financial management, as well as primary and secondary needs. Content We taught the kids about understanding important financial needs, like primary needs, secondary needs, clothing, and food needs. After the explanation, we jumped straight into practice. We had prepared engaging activities such as play shopping, where the kids could have a shopping simulation for their needs. The experiences and interactions from this session will leave a lasting impression and help the children develop a better understanding of financial decision-making. We are very proud of them for coming this far! Closing Once we finished with our activity, we wrapped it up by discussing and teaching them how to make the best financial decision. We then closed today's lesson by giving out snacks, which they received with glee. But soon, the time came for us to head home and bid a warm farewell to the kids. We look forward to the next visit next week! See you next week!
+      </p>
+    </div>
+    <button onclick="toggleReadMore(this)" class="inline-flex items-center text-primary font-medium hover:underline">
+      Read more <i class="fas fa-arrow-right ml-1"></i>
+    </button>
+  </div>
+</div>
+
+<!-- News Item 2 (updated) -->
+<div class="flex flex-col md:flex-row gap-8 items-center bg-white rounded-xl overflow-hidden shadow-md news-item">
+  <div class="md:w-1/2">
+    <img src="media/gambar9.png" alt="Fun Art and Craft Session" class="w-full h-64 md:h-full object-cover" loading="lazy" />
+  </div>
+  <div class="md:w-1/2 p-6 md:p-8">
+    <p class="text-sm text-gray-500 mb-2">Saturday, April 19, 2025</p>
+    <h3 class="text-xl font-bold text-gray-800 mb-4">Fun Art and Craft Session</h3>
+    <div class="text-gray-700 mb-4">
+      <p class="short-text line-clamp-3">
+        On the 19th of April, our community came back for another visit! This week's session emphasized creativity with fun art sessions for the kids. It was chaotic but joyful, allowing us to see the kids' creative sides through interactive collage-making activities.
+      </p>
+      <p class="full-text hidden mt-4">
+        Opening Hi Guys! On the 19th of April, our community came back for another visit! This week's session is a bit different from last weeks. Instead of learning, we emphasized creativity and did some fun art sessions with the kids. It was a bit chaotic, but overall a very fun experience, and we also got to see the kids' creative sides and their joy while doing it. Content Before we started our session, we saw how enthusiastic the kids were today. Many kids were running around chasing one another, playing bottle flips and even playing some traditional game of their own. And of course some of us even joined in with them. After playing around for quite awhile, we started with the main activity, making collage. Beforehand, we had already printed various things on paper such as turtles, birds, rockets etc. With some origami paper, the kids could cut it up into tiny pieces and fill up the picture with different colours however they want. During the session, we could see how some kids were really locked in and focused, which later on made some very neat and awesome pieces. Some of them even finished earlier than others, giving them the chance to make paper airplanes and play around for a while. Closing Before we ended the session, we collected all the artworks they had made and gave them all a small goody bag filled with snacks. Afterwards, we invited the kids to help clean up the room as it was filled with papers and glue, teaching them to be responsible. Overall, we had a really fun time playing around and bonding with kids. We hope to see them again soon!
+      </p>
+    </div>
+    <button onclick="toggleReadMore(this)" class="inline-flex items-center text-primary font-medium hover:underline">
+      Read more <i class="fas fa-arrow-right ml-1"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  function toggleReadMore(button) {
+    const container = button.closest('.news-item');
+    const shortText = container.querySelector('.short-text');
+    const fullText = container.querySelector('.full-text');
+    
+    if (fullText.classList.contains('hidden')) {
+      // Show full text
+      shortText.classList.add('hidden');
+      fullText.classList.remove('hidden');
+      button.innerHTML = 'Read less <i class="fas fa-arrow-up ml-1"></i>';
+    } else {
+      // Show short text
+      shortText.classList.remove('hidden');
+      fullText.classList.add('hidden');
+      button.innerHTML = 'Read more <i class="fas fa-arrow-right ml-1"></i>';
+    }
+  }
+</script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold text-primary">Gallery & Highlights</h2>
+        <div class="flex mt-4 sm:mt-0">
+          <button id="prev" class="gallery-nav-btn h-10 w-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 mr-2">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button id="next" class="gallery-nav-btn h-10 w-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-700">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Gallery Grid -->
+      <div id="newsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Batch 1 -->
+        <div class="batch batch-1">
+          <div class="bg-white rounded-xl overflow-hidden shadow-md">
+            <img src="media/gambar7.png" alt="Team Work Activity" class="w-full h-48 object-cover" loading="lazy" />
+            <div class="p-4">
+              <p class="text-xs text-gray-500 mb-1">Saturday, February 22, 2025</p>
+              <h3 class="text-lg font-medium text-gray-800">The Importance of Team Work</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="batch batch-1">
+          <div class="bg-white rounded-xl overflow-hidden shadow-md">
+            <img src="media/gambar6.png" alt="Problem Solving Session" class="w-full h-48 object-cover" loading="lazy" />
+            <div class="p-4">
+              <p class="text-xs text-gray-500 mb-1">Saturday, April 19, 2025</p>
+              <h3 class="text-lg font-medium text-gray-800">Fun Problem Solving Session</h3>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Batch 2 - Hidden initially -->
+        <div class="hidden batch batch-2">
+          <div class="bg-white rounded-xl overflow-hidden shadow-md">
+            <img src="media/gambar5.png" alt="Math Learning" class="w-full h-48 object-cover" loading="lazy" />
+            <div class="p-4">
+              <p class="text-xs text-gray-500 mb-1">Saturday, March 22, 2025</p>
+              <h3 class="text-lg font-medium text-gray-800">Learning Math the Fun Way</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hidden batch batch-2">
+          <div class="bg-white rounded-xl overflow-hidden shadow-md">
+            <img src="media/gambar5.png" alt="Community Activity" class="w-full h-48 object-cover" loading="lazy" />
+            <div class="p-4">
+              <p class="text-xs text-gray-500 mb-1">September 8, 2024</p>
+              <h3 class="text-lg font-medium text-gray-800">Community Bonding Activity</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-center text-primary mb-12">What Volunteers Say</h2>
+      
+      <div class="bg-gray-50 p-8 md:p-10 rounded-xl relative">
+        <div class="testimonial-quote relative z-10">
+          <p class="text-lg text-gray-700 mb-6 italic">
+            "The best way to find yourself is to lose yourself in the service of others"
+          </p>
+          <div class="flex items-center">
+            <img src="media/pilip.png" alt="Volunteer" class="h-12 w-12 rounded-full object-cover mr-4">
+            <div>
+              <p class="font-semibold text-gray-800">Pilipe Hartomo</p>
+              <p class="text-sm text-gray-600">CEO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Want to Join Our Activities?</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Become part of our community and make a difference in children's lives.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+        Volunteer Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <!-- Logo and About -->
+        <div class="md:col-span-2">
+          <img src="media/gambar3.png" class="h-24 w-auto mb-4" alt="Promise Community Logo">
+          <p class="text-gray-400 mb-4">
+            Empowering youth to lead change, connect communities, and create impact through action.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/promisecommunity.id/" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="#" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="LinkedIn">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">About Us</h3>
+          <ul class="space-y-2">
+            <li><a href="about-us.html" class="text-gray-400 hover:text-white transition-colors duration-200">About Us</a></li>
+            <li><a href="news-resources.html" class="text-gray-400 hover:text-white transition-colors duration-200">Activities</a></li>
+            <li><a href="our-team.html" class="text-gray-400 hover:text-white transition-colors duration-200">Our Team</a></li>
+          </ul>
+        </div>
+        
+        <!-- Get Involved -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">Get Involved</h3>
+          <ul class="space-y-2">
+            <li><a href="donate.html" class="text-gray-400 hover:text-white transition-colors duration-200">Donate</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Contact Us</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="text-gray-400 hover:text-white transition-colors duration-200">Volunteer</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Promise Community. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Gallery Navigation Script -->
   <script>
     const batches = document.querySelectorAll('.batch');
     let currentBatch = 1;
@@ -133,62 +341,49 @@ Once we finished with our activity, we wrapped it up by discussing and teaching 
       batches.forEach(el => el.classList.add('hidden'));
       document.querySelectorAll(`.batch-${(currentBatch % 2) + 1}`).forEach(el => el.classList.remove('hidden'));
       currentBatch = (currentBatch % 2) + 1;
+      
+      // Disable buttons when at end
+      document.getElementById('prev').disabled = false;
+      if (currentBatch === 2) {
+        document.getElementById('next').disabled = true;
+      }
     });
 
     document.getElementById('prev').addEventListener('click', () => {
       batches.forEach(el => el.classList.add('hidden'));
       document.querySelectorAll(`.batch-${currentBatch === 1 ? 2 : 1}`).forEach(el => el.classList.remove('hidden'));
       currentBatch = currentBatch === 1 ? 2 : 1;
+      
+      // Disable buttons when at start
+      document.getElementById('next').disabled = false;
+      if (currentBatch === 1) {
+        document.getElementById('prev').disabled = true;
+      }
     });
+
+    // Initialize
+    document.getElementById('prev').disabled = true;
   </script>
 
-  <!-- Footer -->
-  <footer class="bg-blue-500 text-white px-6 py-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 max-h-full">
-
-      <!-- Logo -->
-      <div class="flex justify-start">
-        <img src="media/gambar3.png" class="h-32 w-auto" alt="Promise Community Logo" />
-      </div>
-
-      <!-- Footer Links -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
-        <!-- About Us -->
-        <div>
-          <h4 class="font-bold mb-2">About Us</h4>
-          <ul class="space-y-1">
-            <li><a href="about-us.html" class="hover:underline">ABOUT US</a></li>
-            <li><a href="news-resources.html" class="hover:underline">ACTIVITIES</a></li>
-            <li><a href="our-team.html" class="hover:underline">OUR TEAM</a></li>
-          </ul>
-        </div>
-
-        <!-- Get Involved -->
-        <div>
-          <h4 class="font-bold mb-2">Get Involved</h4>
-          <ul class="space-y-1">
-            <li><a href="donate.html" class="hover:underline">DONATE</a></li>
-            <li><a href="#" class="hover:underline">CONTACT US</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="hover:underline">VOLUNTEER</a></li>
-          </ul>
-        </div>
-
-        <!-- Connect -->
-        <div>
-          <h4 class="font-bold mb-2">Connect</h4>
-          <div class="flex space-x-3">
-            <a href="https://www.instagram.com/promisecommunity.id/" aria-label="Instagram">
-              <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
-            </a>
-            <a href="#" aria-label="LinkedIn">
-              <img src="media/in.png" alt="LinkedIn" class="h-5 w-5" />
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
+  <!-- Mobile Menu Script -->
+ <script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    console.log("Menu toggled!"); // For debugging
+  });
+  
+  // Improved click-outside detection
+  document.addEventListener('click', (e) => {
+    const isClickInside = mobileMenu.contains(e.target);
+    const isClickOnButton = mobileMenuButton.contains(e.target);
+    
+    if (!isClickInside && !isClickOnButton) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
 </body>
 </html>

@@ -5,187 +5,280 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Promise Community</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#1e40af',
+            accent: '#3b82f6',
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 antialiased">
 
-  <!-- Top Bar -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-stretch justify-between">
-      <!-- Left Links -->
-      <div class="flex items-center space-x-6">
-        <a href="about-us.html" class="text-gray-700 hover:text-blue-500">About Us</a>
-        <a href="our-team.html" class="text-gray-700 hover:text-blue-500">Our Team</a>
-      </div>
+  <!-- Navigation -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        
+        <!-- Left Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="about-us.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">About Us</a>
+          <a href="our-team.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Our Team</a>
+        </div>
 
-      <!-- Center Logo -->
-      <div class="flex items-center space-x-2">
-        <a href="index.html">
-          <img src="media/gambar4.png" alt="Logo" class="h-14 w-auto" />
-        </a>
-      </div>
+        <!-- Center Logo -->
+        <div class="flex items-center justify-center flex-1 md:flex-none">
+          <a href="index.html" class="flex items-center">
+            <img src="media/gambar4.png" alt="Promise Community Logo" class="h-14 w-auto" />
+          </a>
+        </div>
 
-      <!-- Right Links & Buttons -->
-      <div class="flex items-stretch space-x-4">
-        <a href="news-resources.html" class="flex items-center text-gray-700 hover:text-blue-500 px-4">News & Resources</a>
-        <a href="donate.html">
-          <button class="bg-blue-500 text-white px-6 text-sm h-full">DONATE</button>
-        </a>
-        <a href="https://www.instagram.com/promisecommunity.id/" class="flex items-center px-2">
-          <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
-        </a>
+        <!-- Right Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="news-resources.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">News & Resources</a>
+          <a href="donate.html" class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+            DONATE
+          </a>
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary transition-colors duration-200" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </header> 
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="about-us.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About Us</a>
+        <a href="our-team.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Our Team</a>
+        <a href="news-resources.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">News & Resources</a>
+        <a href="donate.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-secondary">Donate</a>
+        <div class="flex px-3 py-2 space-x-4">
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!-- Hero Section -->
-<section class="bg-blue-100 py-20 text-center">
-  <div class="max-w-4xl mx-auto px-6">
-    <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-4" style="font-family: 'Lato', sans-serif;">
-      Promise Community
-    </h1>
-    
-    <p class="text-lg text-gray-700 mb-6">Empowering youth to lead change, connect communities, and create impact through action.</p>
-    <a href="about-us.html" class="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg f ont-medium hover:bg-blue-600 transition">Learn More</a>
-  </div>
-</section>
-
-<!-- Quick Highlights -->
-<section class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-center">
-    <div>
-      <h2 class="text-3xl font-bold text-blue-500 mb-2">150+</h2>
-      <p class="text-gray-700">Youth Volunteers</p>
+  <section class="hero-gradient text-white py-20 md:py-32 px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+        Promise Community
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed">
+        Empowering youth to lead change, connect communities, and create impact through action.
+      </p>
+      <a href="about-us.html" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors duration-200 shadow-lg transform hover:scale-105">
+        Learn More
+      </a>
     </div>
-    <div>
-      <h2 class="text-3xl font-bold text-blue-500 mb-2">20+</h2>
-      <p class="text-gray-700">Community Events</p>
-    </div>
-    <div>
-      <h2 class="text-3xl font-bold text-blue-500 mb-2">∞</h2>
-      <p class="text-gray-700">Potential to Grow</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Mission Section -->
-<section class="py-16 bg-blue-50">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-2xl font-bold text-blue-600 mb-4">Our Mission</h2>
-    <p class="text-gray-700 text-lg leading-relaxed">We believe in the power of youth. Through outreach, collaboration, and innovation, Promise Community creates opportunities for young people to serve, learn, and lead in their communities.</p>
-  </div>
-</section>
-
-<!-- How to Get Involved -->
-<section class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl font-bold text-center text-blue-600 mb-12">Get Involved</h2>
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-      <div class="p-6 bg-blue-100 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-lg font-bold mb-2">Volunteer</h3>
-        <p class="text-gray-700 mb-4">Join us and take part in community projects that make a difference.</p>
-        <a href="#" class="text-blue-500 hover:underline">Sign Up</a>
-      </div>
-      <div class="p-6 bg-blue-100 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-lg font-bold mb-2">Donate</h3>
-        <p class="text-gray-700 mb-4">Support our mission to create a better future for youth and society.</p>
-        <a href="donate.html" class="text-blue-500 hover:underline">Donate Now</a>
-      </div>
-      <div class="p-6 bg-blue-100 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-lg font-bold mb-2">Partner</h3>
-        <p class="text-gray-700 mb-4">Work with us to bring positive change through collaboration.</p>
-        <a href="#" class="text-blue-500 hover:underline">Contact Us</a>
+  <!-- Quick Highlights -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+          <h2 class="text-4xl font-bold text-primary mb-2">50+</h2>
+          <p class="text-gray-700 font-medium">Youth Volunteers</p>
+        </div>
+        <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+          <h2 class="text-4xl font-bold text-primary mb-2">1000+ Hours</h2>
+          <p class="text-gray-700 font-medium">Teaching and Growing</p>
+        </div>
+        <div class="p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+          <h2 class="text-4xl font-bold text-primary mb-2">∞</h2>
+          <p class="text-gray-700 font-medium">Potential to Grow</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Instagram Gallery Preview -->
-<section class="bg-blue-100 py-16">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-2xl font-bold text-blue-600 mb-4">Follow Our Journey</h2>
-    <p class="text-gray-700 mb-6">Catch up on our latest events and stories on Instagram.</p>
-    <a href="https://www.instagram.com/promisecommunity.id/" class="inline-block bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">Visit Instagram</a>
-  </div>
-</section>
+  <!-- Mission Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white p-8 md:p-10 rounded-xl shadow-sm">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">Our Mission</h2>
+        <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+          We believe in the power of youth. Through outreach, collaboration, and innovation, Promise Community creates opportunities for young people to serve, learn, and lead in their communities.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<!-- Instagram Posts Section -->
-<section class="bg-gray-100 py-16">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-blue-600 mb-8">On Instagram</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- How to Get Involved -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">Get Involved</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-md card-hover border border-gray-100">
+          <div class="text-primary mb-4">
+            <i class="fas fa-hands-helping text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Volunteer</h3>
+          <p class="text-gray-700 mb-4">Join us and take part in community projects that make a difference.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="inline-block text-primary font-medium hover:underline">
+            Sign Up <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md card-hover border border-gray-100">
+          <div class="text-primary mb-4">
+            <i class="fas fa-donate text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Donate</h3>
+          <p class="text-gray-700 mb-4">Support our mission to create a better future for youth and society.</p>
+          <a href="donate.html" class="inline-block text-primary font-medium hover:underline">
+            Donate Now <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md card-hover border border-gray-100">
+          <div class="text-primary mb-4">
+            <i class="fas fa-handshake text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Partner</h3>
+          <p class="text-gray-700 mb-4">Work with us to bring positive change through collaboration.</p>
+          <a href="#" class="inline-block text-primary font-medium hover:underline">
+            Contact Us <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">Follow Our Journey</h2>
+        <p class="text-gray-700 max-w-2xl mx-auto">Catch up on our latest events and stories on Instagram.</p>
+      </div>
       
-      <!-- Instagram Post 1 -->
-      <div class="border p-4 bg-white shadow-md">
-        <iframe src="https://www.instagram.com/p/C_a8yy9yT3y/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      <!-- Instagram Posts Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <!-- Instagram Post 1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <iframe src="https://www.instagram.com/p/C_a8yy9yT3y/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true" class="w-full"></iframe>
+        </div>
+        
+        <!-- Instagram Post 2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <iframe src="https://www.instagram.com/p/C_a8xWBSwad/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true" class="w-full"></iframe>
+        </div>
+        
+        <!-- Instagram Post 3 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <iframe src="https://www.instagram.com/p/C_a8vv-SN6_/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true" class="w-full"></iframe>
+        </div>
       </div>
-
-      <!-- Instagram Post 2 -->
-      <div class="border p-4 bg-white shadow-md">
-        <iframe src="https://www.instagram.com/p/C_a8xWBSwad/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+      
+      <div class="text-center">
+        <a href="https://www.instagram.com/promisecommunity.id/" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity duration-200">
+          <i class="fab fa-instagram mr-2"></i> Visit Instagram
+        </a>
       </div>
-
-      <!-- Instagram Post 3 -->
-      <div class="border p-4 bg-white shadow-md">
-        <iframe src="https://www.instagram.com/p/C_a8vv-SN6_/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-      </div>
-
     </div>
-  </div>
-</section>
-
-
-
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-500 text-white px-6 py-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 max-h-full">
-      
-      <!-- Logo Image -->
-      <div class="flex justify-start">
-        <img src="media/gambar3.png" class="h-32 w-auto" alt="Promise Community Logo">
-      </div>
-
-      <!-- Links Section -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
-        
-        <!-- About Us -->
-        <div>
-          <h4 class="font-bold mb-2">About Us</h4>
-          <ul class="space-y-1">
-            <li><a href="about-us.html" class="hover:underline">ABOUT US</a></li>
-            <li><a href="news-resources.html" class="hover:underline">ACTIVITIES</a></li>
-            <li><a href="our-team.html" class="hover:underline">OUR TEAM</a></li>
-          </ul>
-        </div>
-
-        <!-- Get Involved -->
-        <div>
-          <h4 class="font-bold mb-2">Get Involved</h4>
-          <ul class="space-y-1">
-            <li><a href="donate.html" class="hover:underline">DONATE</a></li>
-            <li><a href="#" class="hover:underline">CONTACT US</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="hover:underline">VOLUNTEER</a></li>
-          </ul>
-        </div>
-
-        <!-- Connect -->
-        <div>
-          <h4 class="font-bold mb-2">Connect</h4>
-          <div class="flex space-x-3">
-            <a href="https://www.instagram.com/promisecommunity.id/" aria-label="Instagram">
-              <img src="media/ig.png" alt="Instagram" class="h-5 w-5">
+  <footer class="bg-primary text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <!-- Logo and About -->
+        <div class="md:col-span-2">
+          <img src="media/gambar3.png" class="h-24 w-auto mb-4" alt="Promise Community Logo">
+          <p class="text-blue-100 mb-4">
+            Empowering youth to lead change, connect communities, and create impact through action.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/promisecommunity.id/" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
             </a>
-            <a href="#" aria-label="LinkedIn">
-              <img src="media/in.png" alt="LinkedIn" class="h-5 w-5">
+            <a href="#" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="LinkedIn">
+              <i class="fab fa-linkedin text-xl"></i>
             </a>
           </div>
         </div>
-
+        
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">About Us</h3>
+          <ul class="space-y-2">
+            <li><a href="about-us.html" class="text-blue-100 hover:text-white transition-colors duration-200">About Us</a></li>
+            <li><a href="news-resources.html" class="text-blue-100 hover:text-white transition-colors duration-200">Activities</a></li>
+            <li><a href="our-team.html" class="text-blue-100 hover:text-white transition-colors duration-200">Our Team</a></li>
+          </ul>
+        </div>
+        
+        <!-- Get Involved -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">Get Involved</h3>
+          <ul class="space-y-2">
+            <li><a href="donate.html" class="text-blue-100 hover:text-white transition-colors duration-200">Donate</a></li>
+            <li><a href="#" class="text-blue-100 hover:text-white transition-colors duration-200">Contact Us</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="text-blue-100 hover:text-white transition-colors duration-200">Volunteer</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-blue-400 mt-10 pt-6 text-center text-blue-100">
+        <p>&copy; 2023 Promise Community. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Mobile Menu Script -->
+ <script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    console.log("Menu toggled!"); // For debugging
+  });
+  
+  // Improved click-outside detection
+  document.addEventListener('click', (e) => {
+    const isClickInside = mobileMenu.contains(e.target);
+    const isClickOnButton = mobileMenuButton.contains(e.target);
+    
+    if (!isClickInside && !isClickOnButton) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
 </body>
 </html>

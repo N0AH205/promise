@@ -3,209 +3,387 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Promise Community</title>
+  <title>Our Team - Promise Community</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#1e40af',
+            accent: '#3b82f6',
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .team-card {
+      transition: all 0.3s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .team-member-img {
+      transition: all 0.3s ease;
+    }
+    .team-card:hover .team-member-img {
+      transform: scale(1.05);
+    }
+    .role-badge {
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 antialiased">
 
-  <!-- Top Bar -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-stretch justify-between">
-      <!-- Left Links -->
-      <div class="flex items-center space-x-6">
-        <a href="about-us.html" class="text-gray-700 hover:text-blue-500">About Us</a>
-        <a href="our-team.html" class="text-gray-700 hover:text-blue-500">Our Team</a>
-      </div>
+  <!-- Navigation -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        
+        <!-- Left Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="about-us.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">About Us</a>
+          <a href="our-team.html" class="text-primary font-medium">Our Team</a>
+        </div>
 
-      <!-- Center Logo -->
-      <div class="flex items-center space-x-2">
-        <a href="index.html">
-          <img src="media/gambar4.png" alt="Logo" class="h-14 w-auto" />
-        </a>
-      </div>
+        <!-- Center Logo -->
+        <div class="flex items-center justify-center flex-1 md:flex-none">
+          <a href="index.html" class="flex items-center">
+            <img src="media/gambar4.png" alt="Promise Community Logo" class="h-14 w-auto" />
+          </a>
+        </div>
 
-      <!-- Right Links & Buttons -->
-      <div class="flex items-stretch space-x-4">
-        <a href="news-resources.html" class="flex items-center text-gray-700 hover:text-blue-500 px-4">News & Resources</a>
-        <a href="donate.html">
-          <button class="bg-blue-500 text-white px-6 text-sm h-full">DONATE</button>
-        </a>
-        <a href="https://www.instagram.com/promisecommunity.id/" class="flex items-center px-2">
-          <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
-        </a>
+        <!-- Right Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="news-resources.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">News & Resources</a>
+          <a href="donate.html" class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+            DONATE
+          </a>
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary transition-colors duration-200" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </header> 
 
-  <!-- Meet The Team Section -->
-  <section class="bg-white py-16 px-6">
-    <div class="max-w-6xl mx-auto text-center font-lato">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-12">Meet The Team</h2>
-
-      <!-- Core Team Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-        <!-- Repeat this block for each member -->
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Filipe Hartomo</p>
-          <p class="text-xs text-gray-600">FOUNDER / PRESIDENT</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Reynald Dwi Putra</p>
-          <p class="text-xs text-gray-600">FOUNDER / PRESIDENT</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Jesslyn Elysia Linfred</p>
-          <p class="text-xs text-gray-600">CO-FOUNDER / CO-PRESIDENT</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Hayden Wijaya</p>
-          <p class="text-xs text-gray-600">SECRETARY</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Eirene Chara Suharyono</p>
-          <p class="text-xs text-gray-600">TREASURER</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Lydia Wong Bonanza</p>
-          <p class="text-xs text-gray-600">TREASURER</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Nathan Widjaja</p>
-          <p class="text-xs text-gray-600">HEAD OF PUBLIC RELATIONS</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Aileen Phineal</p>
-          <p class="text-xs text-gray-600">HEAD OF EVENTS</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Hayden Wijaya</p>
-          <p class="text-xs text-gray-600">HEAD OF DOCUMENTATION</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Fidela Cornelius</p>
-          <p class="text-xs text-gray-600">HEAD OF SOCIAL MEDIA</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Rey Felix Tabrani</p>
-          <p class="text-xs text-gray-600">HEAD OF EQUIPMENTS</p>
-        </div>
-        <div class="text-center">
-          <img src="media/placeholder.png" alt="Profile" class="w-full rounded shadow mb-2" />
-          <p class="text-blue-700 font-medium">Noah Stephen Tjiang</p>
-          <p class="text-xs text-gray-600">HEAD OF IT DEVELOPMENT</p>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="about-us.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About Us</a>
+        <a href="our-team.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-blue-50">Our Team</a>
+        <a href="news-resources.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">News & Resources</a>
+        <a href="donate.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-secondary">Donate</a>
+        <div class="flex px-3 py-2 space-x-4">
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
         </div>
       </div>
+    </div>
+  </header>
 
-      <!-- Extended Team -->
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-10 text-sm">
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Hansen Lie</p>
-          <p class="text-black">EVENTS COMMITTEE MEMBER</p>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-secondary text-white py-16 md:py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">Meet Our Team</h1>
+      <p class="text-xl text-blue-100">The passionate individuals behind Promise Community</p>
+    </div>
+  </section>
+
+  <!-- Core Team -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-12 text-center">Leadership Team</h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        
+        <!-- Team Member 1 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Filipe Hartomo" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      FOUNDER / PRESIDENT
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Filipe Hartomo</h3>
+  </div>
+</div>
+
+<!-- Team Member 2 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Reynald Dwi Putra" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      FOUNDER / PRESIDENT
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Reynald Dwi Putra</h3>
+  </div>
+</div>
+
+<!-- Team Member 3 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Jesslyn Elysia Linfred" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      CO-FOUNDER / CO-PRESIDENT
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Jesslyn Elysia Linfred</h3>
+  </div>
+</div>
+
+<!-- Team Member 4 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Hayden Wijaya" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      SECRETARY
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Hayden Wijaya</h3>
+  </div>
+</div>
+
+<!-- Team Member 5 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Eirene Chara Suharyono" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      TREASURER
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Eirene Chara Suharyono</h3>
+  </div>
+</div>
+
+<!-- Team Member 6 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Lydia Wong Bonanza" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      TREASURER
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Lydia Wong Bonanza</h3>
+  </div>
+</div>
+
+<!-- Team Member 7 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Nathan Widjaja" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      HEAD OF INFORMATICS
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Tjiang Noah Stephen</h3>
+  </div>
+</div>
+
+<!-- Team Member 8 -->
+<div class="team-card bg-white rounded-xl shadow-md">
+  <div class="relative pb-3/4 h-64">
+    <img src="media/placeholder.png" alt="Aileen Phineal" class="team-member-img absolute h-full w-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-6 relative">
+    <div class="role-badge bg-primary text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap w-max mx-auto">
+      HEAD OF EVENTS
+    </div>
+    <h3 class="text-lg font-bold text-center text-gray-800 mt-4">Aileen Phineal</h3>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extended Team -->
+  <section class="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-12 text-center">Our Amazing Volunteers</h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Volunteer 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Hansen Lie</h3>
+          <p class="text-sm text-gray-600">EVENTS COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Clarice Aurelia Jo</p>
-          <p class="text-black">EVENTS COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Clarice Aurelia Jo</h3>
+          <p class="text-sm text-gray-600">EVENTS COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Revania Velma Tiono</p>
-          <p class="text-black">EVENTS COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Revania Velma Tiono</h3>
+          <p class="text-sm text-gray-600">EVENTS COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Nadine Danielle Zulkarnain</p>
-          <p class="text-black">EVENTS COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Nadine Danielle Zulkarnain</h3>
+          <p class="text-sm text-gray-600">EVENTS COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Nicole Sapphira</p>
-          <p class="text-black">EVENTS COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Nicole Sapphira</h3>
+          <p class="text-sm text-gray-600">EVENTS COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Elaine Kimberly Lukita</p>
-          <p class="text-black">EVENTS COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 6 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Elaine Kimberly Lukita</h3>
+          <p class="text-sm text-gray-600">EVENTS COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Livia Gabriel Ho</p>
-          <p class="text-black">PR COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 7 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Livia Gabriel Ho</h3>
+          <p class="text-sm text-gray-600">PR COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Fideleon Nissi Sutanto</p>
-          <p class="text-black">PR COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 8 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Fideleon Nissi Sutanto</h3>
+          <p class="text-sm text-gray-600">PR COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Davin Wellington Hianlee</p>
-          <p class="text-black">PR COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 9 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Davin Wellington Hianlee</h3>
+          <p class="text-sm text-gray-600">PR COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Nicole Juanda</p>
-          <p class="text-black">PR COMMITTEE MEMBER</p>
+        
+        <!-- Volunteer 10 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Nicole Juanda</h3>
+          <p class="text-sm text-gray-600">PR COMMITTEE MEMBER</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Hallie Rimba</p>
-          <p class="text-black">DOCUMENTATION</p>
+        
+        <!-- Volunteer 11 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Hallie Rimba</h3>
+          <p class="text-sm text-gray-600">DOCUMENTATION</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Valezca Jaclyn Lie</p>
-          <p class="text-black">DOCUMENTATION</p>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Geollen Aubrey Kurniawan</p>
-          <p class="text-black">PUBLICATIONS</p>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <p class="text-blue-600">Caitlyn Dominique Fendinata</p>
-          <p class="text-black">PUBLICATIONS</p>
+        
+        <!-- Volunteer 12 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+          <h3 class="text-lg font-medium text-primary">Valezca Jaclyn Lie</h3>
+          <p class="text-sm text-gray-600">DOCUMENTATION</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-blue-500 text-white px-6 py-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-      <!-- Logo -->
-      <div class="flex justify-start">
-        <img src="media/gambar3.png" class="h-32 w-auto" alt="Promise Community Logo" />
-      </div>
+  <!-- Join Us Section -->
+  <section class="py-16 bg-primary text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Want to Join Our Team?</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        We're always looking for passionate individuals to join our community.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+        Volunteer Now
+      </a>
+    </div>
+  </section>
 
-      <!-- Footer Links -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <!-- Logo and About -->
+        <div class="md:col-span-2">
+          <img src="media/gambar3.png" class="h-24 w-auto mb-4" alt="Promise Community Logo">
+          <p class="text-gray-400 mb-4">
+            Empowering youth to lead change, connect communities, and create impact through action.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/promisecommunity.id/" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="#" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="LinkedIn">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
         <div>
-          <h4 class="font-bold mb-2">About Us</h4>
-          <ul class="space-y-1">
-            <li><a href="about-us.html" class="hover:underline">ABOUT US</a></li>
-            <li><a href="news-resources.html" class="hover:underline">ACTIVITIES</a></li>
-            <li><a href="our-team.html" class="hover:underline">OUR TEAM</a></li>
+          <h3 class="text-lg font-bold mb-4">About Us</h3>
+          <ul class="space-y-2">
+            <li><a href="about-us.html" class="text-gray-400 hover:text-white transition-colors duration-200">About Us</a></li>
+            <li><a href="news-resources.html" class="text-gray-400 hover:text-white transition-colors duration-200">Activities</a></li>
+            <li><a href="our-team.html" class="text-gray-400 hover:text-white transition-colors duration-200">Our Team</a></li>
           </ul>
         </div>
+        
+        <!-- Get Involved -->
         <div>
-          <h4 class="font-bold mb-2">Get Involved</h4>
-          <ul class="space-y-1">
-            <li><a href="donate.html" class="hover:underline">DONATE</a></li>
-            <li><a href="#" class="hover:underline">CONTACT US</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="hover:underline">VOLUNTEER</a></li>
+          <h3 class="text-lg font-bold mb-4">Get Involved</h3>
+          <ul class="space-y-2">
+            <li><a href="donate.html" class="text-gray-400 hover:text-white transition-colors duration-200">Donate</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Contact Us</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="text-gray-400 hover:text-white transition-colors duration-200">Volunteer</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-bold mb-2">Connect</h4>
-          <a href="https://www.instagram.com/promisecommunity.id/" aria-label="Instagram">
-            <img src="media/ig.png" alt="Instagram" class="h-5 w-5" />
-          </a>
-        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Promise Community. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Mobile Menu Script -->
+ <script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    console.log("Menu toggled!"); // For debugging
+  });
+  
+  // Improved click-outside detection
+  document.addEventListener('click', (e) => {
+    const isClickInside = mobileMenu.contains(e.target);
+    const isClickOnButton = mobileMenuButton.contains(e.target);
+    
+    if (!isClickInside && !isClickOnButton) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
 </body>
 </html>
