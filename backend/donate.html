@@ -190,16 +190,15 @@
         
         <!-- In your donation form section, replace the file upload section with this: -->
 <div>
+  <div>
   <label for="proofUpload" class="block text-sm font-medium text-gray-700">Upload Proof of Payment *</label>
-  <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md relative">
-    <!-- Upload area content -->
-    <div id="uploadContent" class="space-y-1 text-center">
-      <!-- Upload Icon (changes color when file is selected) -->
+  <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+    <div class="space-y-1 text-center">
       <svg id="uploadIcon" class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
         <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       
-      <!-- Default upload prompt -->
+      <!-- This div will be shown when no file is selected -->
       <div id="uploadPrompt">
         <div class="flex text-sm text-gray-600 justify-center">
           <label for="proofUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-secondary focus-within:outline-none">
@@ -210,21 +209,48 @@
         <p class="text-xs text-gray-500">PNG, JPG, PDF up to 5MB</p>
       </div>
       
-      <!-- File info (shown after upload) -->
+      <!-- This div will be shown when a file is selected -->
       <div id="fileInfo" class="hidden">
         <p id="fileName" class="text-sm font-medium text-primary"></p>
         <p class="text-xs text-gray-500">File uploaded successfully</p>
         <button type="button" id="changeFile" class="text-xs text-gray-500 hover:text-primary mt-1">Change file</button>
       </div>
     </div>
-    
-    <!-- Loading indicator (hidden by default) -->
-    <div id="uploadLoading" class="absolute inset-0 bg-white bg-opacity-80 hidden items-center justify-center">
-      <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
-    </div>
-    
-    <div id="proofError" class="error-message hidden">Please upload proof of payment</div>
   </div>
+  <div id="proofError" class="error-message hidden">Please upload proof of payment</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const fileInput = document.getElementById('proofUpload');
+  const uploadIcon = document.getElementById('uploadIcon');
+  const uploadPrompt = document.getElementById('uploadPrompt');
+  const fileInfo = document.getElementById('fileInfo');
+  const fileName = document.getElementById('fileName');
+  const changeFileBtn = document.getElementById('changeFile');
+  
+  fileInput.addEventListener('change', function(e) {
+    if (this.files && this.files.length > 0) {
+      // Update UI with file info
+      fileName.textContent = this.files[0].name;
+      uploadIcon.classList.remove('text-gray-400');
+      uploadIcon.classList.add('text-green-500');
+      uploadPrompt.classList.add('hidden');
+      fileInfo.classList.remove('hidden');
+      
+      // Hide any previous error
+      document.getElementById('proofError').classList.add('hidden');
+    }
+  });
+  
+  changeFileBtn.addEventListener('click', function() {
+    fileInput.value = '';
+    uploadIcon.classList.remove('text-green-500');
+    uploadIcon.classList.add('text-gray-400');
+    fileInfo.classList.add('hidden');
+    uploadPrompt.classList.remove('hidden');
+  });
+});
+</script>
 </div>
         
         <div class="bg-blue-50 p-4 rounded-lg">
@@ -496,12 +522,14 @@
 
     // Form Submission
     document.getElementById('donationFormFields').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Validate form
-      if (!validateForm()) {
-        return;
-      }
+  e.preventDefault();
+  
+  // Validate proof upload
+  const proof = document.getElementById('proofUpload').files[0];
+  if (!proof) {
+    document.getElementById('proofError').classList.remove('hidden');
+    return;
+  }
 
       // Prepare form data
       const formData = {
