@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
         amount: selectedAmount,
         donationType: donationType,
         anonymous: toggle.checked,
-        proof: await toBase64(document.getElementById('proofUpload').files[0]),
+        imageBase64: await toBase64(document.getElementById('proofUpload').files[0]),
         message: document.getElementById('message').value.trim()
       };
 
