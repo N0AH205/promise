@@ -32,14 +32,6 @@
     .donation-card:hover {
       box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15);
     }
-    .amount-btn.active {
-      background-color: #2563eb;
-      color: white;
-    }
-    .custom-amount:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-    }
     .invalid-field {
       border-color: #ef4444;
       box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
@@ -132,30 +124,19 @@
         <h2 class="text-2xl font-bold mb-2">Join Our Movement</h2>
         <p class="text-gray-600 mb-6">Your support, no matter the size, changes lives. On Gang</p>
         
-        <div class="flex flex-col sm:flex-row gap-4 mb-6">
-          <button class="donation-type flex-1 py-3 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-            ONE-TIME
-          </button>
-          <button class="donation-type flex-1 py-3 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-            MONTHLY
-          </button>
+        <div class="flex gap-4 mb-6">
+          <button class="donation-type flex-1 py-2 border border-gray-300 rounded text-sm font-medium bg-gray-100 text-black">ONE-TIME</button>
+          <button class="donation-type flex-1 py-2 border border-gray-300 rounded text-sm font-medium bg-gray-100 text-black">MONTHLY</button>
         </div>
         
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          <button class="amount-btn py-3 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors" data-amount="50000">
-            Rp50.000
-          </button>
-          <button class="amount-btn py-3 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors" data-amount="75000">
-            Rp75.000
-          </button>
-          <button class="amount-btn py-3 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors" data-amount="100000">
-            Rp100.000
-          </button>
-          <input id="customAmount" type="text" placeholder="CUSTOM" 
-                 class="custom-amount py-3 px-4 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+        <div class="grid grid-cols-4 gap-2 mb-6">
+          <button class="amount-btn border border-gray-300 py-2 rounded text-sm bg-white text-black" data-amount="50000">Rp50.000</button>
+          <button class="amount-btn border border-gray-300 py-2 rounded text-sm bg-white text-black" data-amount="75000">Rp75.000</button>
+          <button class="amount-btn border border-gray-300 py-2 rounded text-sm bg-white text-black" data-amount="100000">Rp100.000</button>
+          <input id="customAmount" type="text" placeholder="CUSTOM" class="border border-gray-300 py-2 px-2 rounded text-sm">
         </div>
         
-        <button id="continueBtn" class="w-full py-3 bg-primary hover:bg-secondary text-white rounded-lg font-semibold transition-colors">
+        <button id="continueBtn" class="w-full py-2 bg-blue-400 hover:bg-blue-500 text-white rounded text-sm font-semibold transition-colors">
           CONTINUE
         </button>
       </div>
@@ -245,85 +226,6 @@
     <div id="proofError" class="error-message hidden">Please upload proof of payment</div>
   </div>
 </div>
-
-<!-- Add this script to handle file upload feedback -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const fileInput = document.getElementById('proofUpload');
-  const uploadIcon = document.getElementById('uploadIcon');
-  const uploadPrompt = document.getElementById('uploadPrompt');
-  const fileInfo = document.getElementById('fileInfo');
-  const fileName = document.getElementById('fileName');
-  const changeFileBtn = document.getElementById('changeFile');
-  const uploadLoading = document.getElementById('uploadLoading');
-  
-  fileInput.addEventListener('change', function(e) {
-    if (this.files && this.files.length > 0) {
-      // Show loading state
-      uploadLoading.classList.remove('hidden');
-      
-      // Simulate processing delay (remove in production)
-      setTimeout(() => {
-        // Update UI with file info
-        fileName.textContent = this.files[0].name;
-        uploadIcon.classList.remove('text-gray-400');
-        uploadIcon.classList.add('text-green-500');
-        uploadPrompt.classList.add('hidden');
-        fileInfo.classList.remove('hidden');
-        uploadLoading.classList.add('hidden');
-        
-        // Hide any previous error
-        document.getElementById('proofError').classList.add('hidden');
-      }, 800); // Remove this timeout in production
-    }
-  });
-  
-  changeFileBtn.addEventListener('click', function() {
-    fileInput.value = '';
-    uploadIcon.classList.remove('text-green-500');
-    uploadIcon.classList.add('text-gray-400');
-    fileInfo.classList.add('hidden');
-    uploadPrompt.classList.remove('hidden');
-  });
-  
-  // Handle drag and drop (optional)
-  const uploadArea = fileInput.closest('.border-dashed');
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    uploadArea.addEventListener(eventName, preventDefaults, false);
-  });
-  
-  function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  
-  ['dragenter', 'dragover'].forEach(eventName => {
-    uploadArea.addEventListener(eventName, highlight, false);
-  });
-  
-  ['dragleave', 'drop'].forEach(eventName => {
-    uploadArea.addEventListener(eventName, unhighlight, false);
-  });
-  
-  function highlight() {
-    uploadArea.classList.add('border-primary', 'bg-blue-50');
-  }
-  
-  function unhighlight() {
-    uploadArea.classList.remove('border-primary', 'bg-blue-50');
-  }
-  
-  uploadArea.addEventListener('drop', handleDrop, false);
-  
-  function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    fileInput.files = files;
-    const event = new Event('change');
-    fileInput.dispatchEvent(event);
-  }
-});
-</script>
         
         <div class="bg-blue-50 p-4 rounded-lg">
           <h3 class="text-sm font-medium text-blue-800 mb-2">Bank Transfer Details</h3>
@@ -393,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <i class="fas fa-quote-left text-3xl text-gray-300"></i>
         </div>
         <p class="text-lg text-gray-700 text-center mb-6 italic">
-          “No one has ever become poor from giving.
+          "No one has ever become poor from giving.
         </p>
         <div class="text-center">
           <p class="font-semibold text-gray-800">Rafael Caruso</p>
@@ -452,110 +354,82 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- Donation Script -->
   <script>
-  // Wait for DOM to fully load
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     let selectedAmount = 0;
-    let donationType = 'one-time'; // Track donation type
-    
-    // Initialize form fields based on anonymous toggle
+    let donationType = 'one-time';
+
     const toggle = document.getElementById("stayAnonymousToggle");
     const donorInfoFields = document.querySelectorAll("#donorInfo input, #donorInfo textarea");
     const errorMessages = document.querySelectorAll(".error-message");
-    
-    // Function to toggle donor info fields
+
     function toggleDonorInfoFields(isAnonymous) {
       donorInfoFields.forEach(field => {
         field.disabled = isAnonymous;
         field.required = !isAnonymous;
-        
         if (isAnonymous) {
-          field.value = ""; // Clear values when anonymous
+          field.value = "";
           field.classList.remove("invalid-field");
         }
       });
-      
-      // Clear all error messages
-      errorMessages.forEach(msg => {
-        msg.classList.add("hidden");
-      });
+      errorMessages.forEach(msg => msg.classList.add("hidden"));
     }
-    
-    // Initialize fields on page load
+
     toggleDonorInfoFields(toggle.checked);
-    
-    // 1. Donation Type Selection
+
+    // Donation Type Selection - Match reference style
     document.querySelectorAll('.donation-type').forEach(btn => {
       btn.addEventListener('click', function() {
-        // Remove active state from all buttons
         document.querySelectorAll('.donation-type').forEach(b => {
           b.classList.remove('bg-blue-500', 'text-white');
           b.classList.add('bg-gray-100', 'text-black');
         });
-        
-        // Add active state to clicked button
         this.classList.add('bg-blue-500', 'text-white');
         this.classList.remove('bg-gray-100', 'text-black');
         
-        // Update donation type
         donationType = this.textContent.trim().toLowerCase().replace('-', '');
         console.log("Donation type set to:", donationType);
       });
     });
 
-    // 2. Amount Selection
+    // Amount Selection - Match reference style
     document.querySelectorAll('.amount-btn').forEach(button => {
       button.addEventListener('click', function() {
-        // Remove active state from all amount buttons
         document.querySelectorAll('.amount-btn').forEach(b => {
           b.classList.remove('bg-blue-500', 'text-white');
           b.classList.add('bg-white', 'text-black');
         });
-        
-        // Add active state to clicked button
         this.classList.add('bg-blue-500', 'text-white');
         this.classList.remove('bg-white', 'text-black');
-        
-        // Set selected amount
+
         selectedAmount = parseInt(this.getAttribute('data-amount'));
-        document.getElementById('customAmount').value = '';
+        document.getElementById('customAmount').value = ''; 
         console.log("Amount selected:", selectedAmount);
       });
     });
 
-    // 3. Custom Amount Handling
+    // Custom Amount Handling
     document.getElementById('customAmount').addEventListener('input', function(e) {
       const value = e.target.value.replace(/[^\d]/g, '');
       if (value) {
         selectedAmount = parseInt(value);
-        // Clear selection from preset amount buttons
         document.querySelectorAll('.amount-btn').forEach(b => {
           b.classList.remove('bg-blue-500', 'text-white');
           b.classList.add('bg-white', 'text-black');
         });
-        console.log("Custom amount entered:", selectedAmount);
       }
     });
 
-    // 4. Continue Button
+    // Continue Button
     document.getElementById('continueBtn').addEventListener('click', function() {
       const customInput = document.getElementById('customAmount').value;
       const customValue = parseInt(customInput.replace(/[^\d]/g, ''));
-      
-      // Use custom value if entered
       if (!isNaN(customValue)) {
         selectedAmount = customValue;
       }
-      
       if (selectedAmount > 0) {
-        // Update donation amount display
-        document.getElementById('donationAmountText').textContent = 
-          `Rp${selectedAmount.toLocaleString('id-ID')}`;
-        
-        // Show form and hide card
+        document.getElementById('donationAmountText').textContent = `Rp${selectedAmount.toLocaleString('id-ID')}`;
         document.getElementById('donationForm').classList.remove('hidden');
         document.getElementById('donationCard').classList.add('hidden');
-        
-        // Scroll to form
         window.scrollTo({
           top: document.getElementById('donationForm').offsetTop - 100,
           behavior: 'smooth'
@@ -565,12 +439,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // 5. Anonymous Donation Toggle
+    // Anonymous Donation Toggle
     toggle.addEventListener("change", function() {
       toggleDonorInfoFields(this.checked);
     });
 
-    // 6. Form Validation
+    // Form Validation
     function validateForm() {
       let isValid = true;
       
@@ -620,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return isValid;
     }
 
-    // 7. Form Submission
+    // Form Submission
     document.getElementById('donationFormFields').addEventListener('submit', async function(e) {
       e.preventDefault();
       
