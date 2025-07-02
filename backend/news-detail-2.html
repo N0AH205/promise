@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stay Healthy and Fit - Promise Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#1e40af',
+            accent: '#3b82f6',
+            cblue : '#4CA1D9'
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #4CA1D9);
+    }
+    .article-content h3 {
+      @apply text-xl font-bold text-cblue mt-8 mb-4;
+    }
+    .article-content p {
+      @apply text-gray-700 mb-4 leading-relaxed;
+    }
+    .article-content {
+      @apply max-w-3xl mx-auto;
+    }
+    .gallery-item {
+      transition: all 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+  <!-- Navigation -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+            <span class="sr-only">Open main menu</span>
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        
+        <!-- Left Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="about-us.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">About Us</a>
+          <a href="our-team.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Our Team</a>
+        </div>
+
+        <!-- Center Logo -->
+        <div class="flex items-center justify-center flex-1 md:flex-none">
+          <a href="index.html" class="flex items-center">
+            <img src="media/gambar4.png" alt="Promise Community Logo" class="h-14 w-auto" />
+          </a>
+        </div>
+
+        <!-- Right Links - Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="news-resources.html" class="text-primary font-medium">News & Resources</a>
+          <a href="donate.html" class="bg-cblue hover:bg-secondary text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+            DONATE
+          </a>
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary transition-colors duration-200" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="about-us.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About Us</a>
+        <a href="our-team.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Our Team</a>
+        <a href="news-resources.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-blue-50">News & Resources</a>
+        <a href="donate.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-cblue hover:bg-secondary">Donate</a>
+        <div class="flex px-3 py-2 space-x-4">
+          <a href="https://www.instagram.com/promisecommunity.id/" class="text-gray-700 hover:text-primary" aria-label="Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white py-16 md:py-24 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="inline-block bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full mb-4">
+        <span class="text-sm font-medium">Community Activity</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">Stay Healthy and Fit</h1>
+      <div class="flex items-center justify-center space-x-4">
+        <i class="far fa-calendar-alt"></i>
+        <p class="text-lg">Saturday, May 17, 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Detail Content -->
+  <section class="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+     <div class="max-w-4xl mx-auto">
+      <div class="mb-10 md:mb-10 rounded-lg overflow-hidden shadow-md">
+      <img src="media/gambar16.png" 
+           alt="Kids learning about healthy eating" 
+           class="w-full h-auto max-h-[400px] object-cover object-center" 
+           loading="lazy" />
+    </div>
+      
+      <!-- Article Content -->
+      <article class="article-content">
+        <p>
+          Hi everyone! On May 17, our community came for another visit! This week we wanted to introduce to the kids regarding healthy eating. We wanted them to know what types of food they needed in order to stay healthy and fit.
+        </p>
+        <br>
+        <p>Before we started, we decided to play a few traditional games with kids in order to bond with them and have some fun. This helped create a comfortable atmosphere before we began our lesson about healthy eating habits.</p>
+        
+        <p>We started our session by teaching the kids about "4 Sehat 5 Sempurna", which mainly consists of staple foods, side dishes, vegetables, fruits and milk to perfect it. We taught by telling them what each of these categories do and provide for your body such as carbohydrates, proteins etc.</p>
+        
+        <p>Afterwards, we told the kids to draw on the whiteboard examples of food for each category such as rice for staple foods and apples for fruits. This interactive approach helped reinforce their understanding of balanced nutrition.</p>
+        <br>
+        <p>After teaching them the main ideas and materials we went on to the activity to make the lesson fun and creative. We gave each kid a piece of paper and told them to draw their favorite foods. They were free to draw and colour it however they wanted, which could definitely help sharpen their creativity.</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+          <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+            <img src="media/gambar19.jpg" alt="Kids drawing healthy foods" class="w-full h-40 object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+            <img src="media/gambar20.JPG" alt="Nutrition education" class="w-full h-40 object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+            <img src="media/gambar21.JPG" alt="Kids participating" class="w-full h-40 object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+        </div>
+        
+        <p>After they were done, we told the kids to submit their papers and we closed off with a prayer. Today's activity was fun and we were glad to see how the kids improved in their knowledge which could help them get a step closer to living a healthy lifestyle. We were happy to see them today and we hope to see them again in our next visit!</p>
+      </article>
+      
+      
+      
+      <!-- Back Button -->
+      <div class="mt-12">
+        <a href="news-resources.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cblue hover:bg-secondary transition-colors duration-200">
+          <i class="fas fa-arrow-left mr-2"></i> Back to All News
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#4CA1D9] text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <!-- Logo and About -->
+        <div class="md:col-span-2">
+          <img src="media/gambar3.png" class="h-24 w-auto mb-4" alt="Promise Community Logo">
+          <p class="text-blue-100 mb-4">
+            A Promise for the Future.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/promisecommunity.id/" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/promise-community/" class="text-white hover:text-blue-200 transition-colors duration-200" aria-label="LinkedIn">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">About Us</h3>
+          <ul class="space-y-2">
+            <li><a href="about-us.html" class="text-blue-100 hover:text-white transition-colors duration-200">About Us</a></li>
+            <li><a href="news-resources.html" class="text-blue-100 hover:text-white transition-colors duration-200">Activities</a></li>
+            <li><a href="our-team.html" class="text-blue-100 hover:text-white transition-colors duration-200">Our Team</a></li>
+          </ul>
+        </div>
+        
+        <!-- Get Involved -->
+        <div>
+          <h3 class="text-lg font-bold mb-4">Get Involved</h3>
+          <ul class="space-y-2">
+            <li><a href="donate.html" class="text-blue-100 hover:text-white transition-colors duration-200">Donate</a></li>
+            <li><a href="https://ig.me/m/promisecommunity.id" class="text-blue-100 hover:text-white transition-colors duration-200">Contact Us</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform" class="text-blue-100 hover:text-white transition-colors duration-200">Volunteer</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-blue-400 mt-10 pt-6 text-center text-blue-100">
+        <p>&copy; 2024 Promise Community. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    document.addEventListener('click', (e) => {
+      const isClickInside = mobileMenu.contains(e.target);
+      const isClickOnButton = mobileMenuButton.contains(e.target);
+      
+      if (!isClickInside && !isClickOnButton) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
