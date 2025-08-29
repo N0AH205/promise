@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   try {
     const { fullName, email, phone, message, anonymous, imageBase64 } = req.body;
 
-    // 🔍 Debug logging
+  
     console.log("🧪 Received fullName:", fullName);
     console.log("🧪 Received imageBase64 preview:", imageBase64?.substring(0, 100));
 
@@ -17,7 +17,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // Forward to Google Apps Script
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbzT5eSqPA-0Obfr58bGNMQvb8J1kdNg8xmkSeDQq7Y7qO56OsIyCnZfMt7HW1RHb0r8/exec';
 
     const forward = await fetch(scriptUrl, {

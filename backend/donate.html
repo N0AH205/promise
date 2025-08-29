@@ -49,11 +49,10 @@
 </head>
 <body class="font-sans text-gray-800 antialiased">
 
-  <!-- Navigation -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
-        <!-- Mobile menu button -->
+  
         <div class="flex items-center md:hidden">
           <button type="button" id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
             <span class="sr-only">Open main menu</span>
@@ -61,20 +60,17 @@
           </button>
         </div>
         
-        <!-- Left Links - Desktop -->
         <div class="hidden md:flex items-center space-x-6">
           <a href="about-us.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">About Us</a>
           <a href="our-team.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Our Team</a>
         </div>
 
-        <!-- Center Logo -->
         <div class="flex items-center justify-center flex-1 md:flex-none">
           <a href="index.html" class="flex items-center">
             <img src="media/gambar4.png" alt="Promise Community Logo" class="h-14 w-auto" />
           </a>
         </div>
 
-        <!-- Right Links - Desktop -->
         <div class="hidden md:flex items-center space-x-6">
           <a href="news-resources.html" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">News & Resources</a>
           <a href="donate.html" class="bg-cblue hover:bg-secondary text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
@@ -87,7 +83,6 @@
       </div>
     </div>
 
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="about-us.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About Us</a>
@@ -103,11 +98,10 @@
     </div>
   </header>
 
-  <!-- Hero Section with Image Background -->
 <div class="relative">
-  <!-- Image background with overlay -->
+ 
   <div class="relative h-64 md:h-96 overflow-hidden">
-    <!-- Background image -->
+   
     <img 
       src="media/gambar10.png" 
       alt="Happy children learning" 
@@ -115,14 +109,12 @@
       loading="eager"  <!-- Important for hero images -->
     >
     
-    <!-- Dark overlay for better text contrast (adjust opacity as needed) -->
     <div class="absolute inset-0 bg-black/30"></div>
     
   
   </div>
 </div>
     
-    <!-- Donation Card -->
     <div id="donationCard" class="container mx-auto px-4 -mt-16 md:-mt-24 relative z-10">
       <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-xl donation-card p-6 md:p-8">
         <h2 class="text-2xl font-bold mb-2">Join Our Movement</h2>
@@ -148,7 +140,6 @@
     </div>
   </div>
 
-  <!-- Donation Form -->
   <section id="donationForm" class="hidden py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6 md:p-8">
       <h2 class="text-2xl font-bold text-center mb-6">Complete Your Donation</h2>
@@ -193,7 +184,6 @@
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></textarea>
         </div>
         
-        <!-- In your donation form section, replace the file upload section with this: -->
 <div>
   <div>
   <label for="proofUpload" class="block text-sm font-medium text-gray-700">Upload Proof of Payment *</label>
@@ -203,7 +193,6 @@
         <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       
-      <!-- This div will be shown when no file is selected -->
       <div id="uploadPrompt">
         <div class="flex text-sm text-gray-600 justify-center">
           <label for="proofUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-secondary focus-within:outline-none">
@@ -214,7 +203,6 @@
         <p class="text-xs text-gray-500">PNG, JPG, PDF up to 5MB</p>
       </div>
       
-      <!-- This div will be shown when a file is selected -->
       <div id="fileInfo" class="hidden">
         <p id="fileName" class="text-sm font-medium text-primary"></p>
         <p class="text-xs text-gray-500">File uploaded successfully</p>
@@ -235,14 +223,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   fileInput.addEventListener('change', function(e) {
     if (this.files && this.files.length > 0) {
-      // Update UI with file info
       fileName.textContent = this.files[0].name;
       uploadIcon.classList.remove('text-gray-400');
       uploadIcon.classList.add('text-green-500');
       uploadPrompt.classList.add('hidden');
       fileInfo.classList.remove('hidden');
       
-      // Hide any previous error
       document.getElementById('proofError').classList.add('hidden');
     }
   });
@@ -274,13 +260,11 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </section>
 
-  <!-- Impact Section -->
   <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-bold text-center text-cblue mb-12">Your Donation Makes an Impact</h2>
       
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Impact 1 -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
           <div class="text-primary mb-4 text-4xl">
             <i class="fas fa-book-open"style="color: #4CA1D9;"></i>
@@ -291,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </p>
         </div>
         
-        <!-- Impact 2 -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
           <div class="text-primary mb-4 text-4xl">
             <i class="fas fa-utensils"style="color: #4CA1D9;"></i>
@@ -302,7 +285,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </p>
         </div>
         
-        <!-- Impact 3 -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
           <div class="text-primary mb-4 text-4xl">
             <i class="fas fa-users"style="color: #4CA1D9;"></i>
@@ -316,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </section>
 
-  <!-- Testimonials -->
   <section class="py-16 bg-gray-50 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-bold text-center text-cblue mb-12">What Donors Say</h2>
@@ -336,11 +317,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </section>
 
- <!-- Footer -->
   <footer class=" hero-gradient  text-white py-12 bg-[#4CA1D9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-        <!-- Logo and About -->
+       
         <div class="md:col-span-2">
           <img src="media/gambar3.png" class="h-24 w-auto mb-4" alt="Promise Community Logo">
           <p class="text-blue-100 mb-4">
@@ -356,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
         
-        <!-- Quick Links -->
         <div>
           <h3 class="text-lg font-bold mb-4">About Us</h3>
           <ul class="space-y-2">
@@ -366,7 +345,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </ul>
         </div>
         
-        <!-- Get Involved -->
         <div>
           <h3 class="text-lg font-bold mb-4">Get Involved</h3>
           <ul class="space-y-2">
@@ -383,7 +361,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </footer>
 
-  <!-- Donation Script -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     let selectedAmount = 0;
@@ -407,7 +384,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     toggleDonorInfoFields(toggle.checked);
 
-    // Donation Type Selection - Match reference style
     document.querySelectorAll('.donation-type').forEach(btn => {
       btn.addEventListener('click', function() {
         document.querySelectorAll('.donation-type').forEach(b => {
@@ -422,7 +398,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-    // Amount Selection - Match reference style
     document.querySelectorAll('.amount-btn').forEach(button => {
       button.addEventListener('click', function() {
         document.querySelectorAll('.amount-btn').forEach(b => {
@@ -438,7 +413,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-    // Custom Amount Handling
     document.getElementById('customAmount').addEventListener('input', function(e) {
       const value = e.target.value.replace(/[^\d]/g, '');
       if (value) {
@@ -450,7 +424,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Continue Button
     document.getElementById('continueBtn').addEventListener('click', function() {
       const customInput = document.getElementById('customAmount').value;
       const customValue = parseInt(customInput.replace(/[^\d]/g, ''));
@@ -470,16 +443,13 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Anonymous Donation Toggle
     toggle.addEventListener("change", function() {
       toggleDonorInfoFields(this.checked);
     });
 
-    // Form Validation
     function validateForm() {
       let isValid = true;
       
-      // Clear previous error states
       document.querySelectorAll(".invalid-field").forEach(el => {
         el.classList.remove("invalid-field");
       });
@@ -487,16 +457,14 @@ document.addEventListener('DOMContentLoaded', function() {
         msg.classList.add("hidden");
       });
       
-      // Validate proof upload
       const proof = document.getElementById('proofUpload').files[0];
       if (!proof) {
         document.getElementById('proofError').classList.remove('hidden');
         isValid = false;
       }
       
-      // Only validate donor info if not anonymous
       if (!toggle.checked) {
-        // Validate full name
+       
         const fullName = document.getElementById('fullName').value.trim();
         if (!fullName) {
           document.getElementById('fullName').classList.add('invalid-field');
@@ -504,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
           isValid = false;
         }
         
-        // Validate email
+      
         const email = document.getElementById('email').value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
@@ -513,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
           isValid = false;
         }
         
-        // Validate phone
+       
         const phone = document.getElementById('phone').value.trim();
         if (!phone) {
           document.getElementById('phone').classList.add('invalid-field');
@@ -525,18 +493,15 @@ document.addEventListener('DOMContentLoaded', function() {
       return isValid;
     }
 
-    // Form Submission
     document.getElementById('donationFormFields').addEventListener('submit', async function(e) {
   e.preventDefault();
   
-  // Validate proof upload
   const proof = document.getElementById('proofUpload').files[0];
   if (!proof) {
     document.getElementById('proofError').classList.remove('hidden');
     return;
   }
 
-      // Prepare form data
       const formData = {
         amount: selectedAmount,
         donationType: donationType,
@@ -551,7 +516,6 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.phone = document.getElementById('phone').value.trim();
       }
       
-      // Submit data (original API call)
       try {
         const response = await fetch('/api/upload', {
           method: 'POST',
@@ -564,7 +528,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const result = await response.json();
         if (result.success) {
           alert("Thank you for your donation!");
-          // Reset form if needed
         } else {
           throw new Error(result.message || "Submission failed");
         }
@@ -574,7 +537,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Helper function to convert file to base64
     function toBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -592,10 +554,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   mobileMenuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
-    console.log("Menu toggled!"); // For debugging
+    console.log("Menu toggled!"); 
   });
   
-  // Improved click-outside detection
   document.addEventListener('click', (e) => {
     const isClickInside = mobileMenu.contains(e.target);
     const isClickOnButton = mobileMenuButton.contains(e.target);
