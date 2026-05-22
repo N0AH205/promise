@@ -1,0 +1,16 @@
+{
+  "name": "promise-community",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Promise Community nonprofit website and donation backend.",
+  "scripts": {
+    "install:backend": "npm --prefix backend install",
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "check": "npm --prefix backend run check",
+    "test": "npm --prefix backend test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

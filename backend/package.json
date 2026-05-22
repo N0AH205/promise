@@ -1,17 +1,36 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
+  "name": "promise-community-backend",
+  "version": "2.0.0",
+  "description": "Backend server for Promise Community - a non-profit organization website",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node --check server.js && node --check api/upload.js",
+    "test": "npm run check"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nonprofit",
+    "community",
+    "charity",
+    "donation",
+    "education"
+  ],
+  "author": "Promise Community Team",
   "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/N0AH205/promise.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
+    "axios": "^1.7.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "multer": "^1.4.5-lts.2"
+    "multer": "^1.4.5-lts.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
   }
 }

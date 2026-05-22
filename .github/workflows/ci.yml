@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Validate project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        run: npm ci --prefix backend
+
+      - name: Run backend checks
+        run: npm test --prefix backend
+
+      - name: Validate HTML files
+        run: |
+          for f in backend/*.html; do
+            if ! grep -q "<!DOCTYPE html>" "$f"; then
+              echo "Missing DOCTYPE in $f"
+              exit 1
+            fi
+            if ! grep -q "</html>" "$f"; then
+              echo "Missing closing html tag in $f"
+              exit 1
+            fi
+            echo "Validated $(basename "$f")"
+          done
