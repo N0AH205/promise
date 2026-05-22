@@ -6,12 +6,10 @@
 
 Promise Community is a nonprofit website for a Jakarta-based youth volunteer community focused on education, mentorship, and well-being for underprivileged children.
 
-The project includes a responsive static website, an Express backend, and a donation submission flow that forwards proof-of-payment records to a Google Apps Script webhook.
+The project includes a responsive website, an Express backend, and a donation submission flow that forwards proof-of-payment records to a Google Apps Script webhook.
 
 ## Features
 
-- Responsive public pages for Home, About, Team, News, and Donate
-- Donation flow with preset/custom amounts, one-time/monthly choice, anonymous donations, and proof-of-payment upload
 - Client-side and server-side validation for donation submissions
 - Express routes for static pages and donation APIs
 - Vercel-compatible serverless endpoint at `backend/api/upload.js`
@@ -83,9 +81,6 @@ CORS_ORIGIN=*
 GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
 MAX_UPLOAD_SIZE=10mb
 ```
-
-`GOOGLE_SHEETS_WEBHOOK_URL` must be configured before real donation submissions can be saved.
-
 ## Scripts
 
 Run from the repository root:
