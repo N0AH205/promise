@@ -1,119 +1,80 @@
 # Promise Community
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org)
-[![Express](https://img.shields.io/badge/Express-5.1+-lightgrey.svg)](https://expressjs.com)
-[![Deploy on Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://vercel.com)
+> **A Promise for the Future.**
+> Promise Community is a Jakarta-based youth volunteer non-profit community focused on education, mentorship, and well-being for underprivileged children.
 
-Promise Community is a nonprofit website for a Jakarta-based youth volunteer community focused on education, mentorship, and well-being for underprivileged children.
+---
 
-The project includes a responsive website, an Express backend, and a donation submission flow that forwards proof-of-payment records to a Google Apps Script webhook.
+## 🌟 What is Promise Community?
 
-## Features
+In many traditional education systems, vital life skills, creative thinking, and holistic well-being are often overlooked. Underprivileged children, in particular, face a significant gap due to the lack of proper facilities and experienced mentors. 
 
-- Client-side and server-side validation for donation submissions
-- Express routes for static pages and donation APIs
-- Vercel-compatible serverless endpoint at `backend/api/upload.js`
-- Security and production basics with Helmet, CORS, Morgan logging, environment configuration, and GitHub Actions CI
+**Promise Community** was founded to bridge this gap. We bring together passionate youth volunteers who share their knowledge, talents, and time through interactive, hands-on activities, tailored learning sessions, and creative games. Our goal is to make learning an effective, enjoyable, and transformative experience.
 
-## Tech Stack
+---
 
-| Area | Tools |
-| --- | --- |
-| Frontend | HTML, Tailwind CSS CDN, Alpine.js, Font Awesome, Google Fonts |
-| Backend | Node.js, Express, Axios, Helmet, CORS, Morgan |
-| Integrations | Google Apps Script / Google Sheets webhook |
-| Tooling | npm scripts, GitHub Actions |
+## 📈 Our Impact at a Glance
 
-## Project Structure
+Our community is powered by action, collaboration, and a shared dedication to shaping a better tomorrow.
 
-```text
-promise/
-|-- .env.example
-|-- .github/workflows/ci.yml
-|-- docs/
-|   |-- API.md
-|   |-- ARCHITECTURE.md
-|   `-- DEPLOYMENT.md
-|-- backend/
-|   |-- server.js
-|   |-- api/upload.js
-|   |-- index.html
-|   |-- about-us.html
-|   |-- donate.html
-|   |-- our-team.html
-|   |-- news-resources.html
-|   |-- news-detail-1.html
-|   |-- news-detail-2.html
-|   `-- media/
-|-- package.json
-`-- README.md
-```
+*   **50+ Youth Volunteers**: Dedicated young leaders and mentors actively contributing their skills.
+*   **45+ Active Sessions**: Structured visits encompassing education, creative workshops, and healthy living guidelines.
+*   **Growing Network**: Supporting underprivileged communities across Jakarta with essential educational and emotional resources.
 
-## Quick Start
+---
 
-### Prerequisites
+## 👁️ Vision & Mission
 
-- Node.js 18+
-- npm
+### Our Vision
+To build a compassionate and empowered generation by bridging the gap between knowledge and opportunity, fostering growth not only in underprivileged children but also in the hearts and minds of those who serve them.
 
-### Install and Run
+### Our Mission
+*   **Empowerment**: Provide access to essential life skills through engaging, fun, and interactive learning.
+*   **Leadership Development**: Help youth members grow through hands-on service, leadership, and collaboration.
+*   **Unity & Connection**: Cultivate strong bonds, teamwork, and shared purpose between volunteers and the children they serve.
+*   **Social Awareness**: Encourage young people to understand real-world challenges and become active agents of positive change.
 
-```bash
-git clone https://github.com/N0AH205/promise.git
-cd promise
-npm run install:backend
-copy .env.example .env
-npm start
-```
+---
 
-On macOS/Linux, use `cp .env.example .env` instead of `copy .env.example .env`.
+## 🎨 Core Focus Areas & Activities
 
-The site runs at `http://localhost:3000`.
+Through our regular community outreach visits, we focus on three main pillars:
 
-## Environment Variables
+### 1. Education & Life Skills
+Introducing essential concepts and life skills in simplified, memorable ways (e.g., financial literacy basics, teamwork, problem-solving, and communication).
 
-Create `.env` in the repository root:
+### 2. Creative Expression & Arts
+Unlocking children's creativity through arts and crafts, collages, drawing, and papercrafts. These sessions help kids build focus, explore artistic expression, and enjoy the simple pleasure of creating.
 
-```env
-PORT=3000
-NODE_ENV=development
-CORS_ORIGIN=*
-GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
-MAX_UPLOAD_SIZE=10mb
-```
-## Scripts
+### 3. Health & Well-being
+Promoting healthy lifestyles, balanced nutrition (teaching the "4 Sehat 5 Sempurna" principles), and physical well-being. We use interactive whiteboards, drawing games, and traditional games to make health education active and memorable.
 
-Run from the repository root:
+---
 
-| Command | Description |
-| --- | --- |
-| `npm run install:backend` | Install backend dependencies |
-| `npm start` | Start the Express server |
-| `npm run dev` | Start the Express server for local development |
-| `npm run check` | Check backend JavaScript syntax |
-| `npm test` | Run the project checks |
+## 🤝 Get Involved
 
-## API
+We believe in the power of youth-driven collaboration. There are several ways to support our mission:
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| `GET` | `/` | Home page |
-| `GET` | `/:page.html` | Static HTML pages |
-| `POST` | `/donate` | Submit donation data |
-| `POST` | `/api/upload` | Donation endpoint used by the form and Vercel |
+### 🙋 Volunteer
+Join our team of active youth volunteers and help us design, run, and lead community projects. 
+👉 [Fill out the Volunteer Form](https://docs.google.com/forms/d/e/1FAIpQLSdGSWOznfmJmKzXt9m9OEPuljFizOzYGCNtO6z1wV1t2-bmHg/viewform)
 
-See [docs/API.md](docs/API.md) for request and response examples.
+### 💖 Donate
+Your contributions directly fund learning materials, art supplies, healthy meals, and school essentials for the children we support.
+👉 Donations can be submitted directly through our website interface.
 
-## Deployment
+### 🏢 Partner
+Collaborate with us for corporate social responsibility (CSR) programs, institutional partnerships, or community events.
+👉 Contact us via [Instagram DM](https://www.instagram.com/promisecommunity.id/) or our official channels.
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for VPS, Render/Railway, and Vercel deployment notes.
+---
 
-## Documentation
+## 📱 Connect With Us
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [API Reference](docs/API.md)
-- [Deployment Guide](docs/DEPLOYMENT.md)
+Stay updated on our latest sessions, event announcements, and stories of impact:
 
-## License
+*   **Instagram**: [@promisecommunity.id](https://www.instagram.com/promisecommunity.id/)
+*   **LinkedIn**: [Promise Community](https://www.linkedin.com/company/promise-community/)
 
-This project is licensed under the ISC License.
+---
+*© 2024 Promise Community. All rights reserved.*
